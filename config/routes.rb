@@ -1,7 +1,9 @@
 MygovForms::Application.routes.draw do
   resources :forms, :only => [:index, :show, :create]
   get "forms/submissions/:id" => 'forms#submitted', :as => :submitted_form
-  
+  namespace :api do
+    resources :forms, :only => [:index, :show, :create]
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
