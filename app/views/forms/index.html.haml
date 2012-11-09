@@ -1,0 +1,8 @@
+%h3
+  All Forms
+%p
+  Select a form
+%ul
+  - @forms.each do |form|
+    %li
+      = link_to form_title(form), form_path(form)

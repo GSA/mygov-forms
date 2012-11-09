@@ -1,4 +1,7 @@
 MygovForms::Application.routes.draw do
+  resources :forms, :only => [:index, :show, :create]
+  get "forms/submissions/:id" => 'forms#submitted', :as => :submitted_form
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +51,7 @@ MygovForms::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'forms#index'
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,0 +1,19 @@
+%h3
+  = form_title(@form)
+%p
+  This page will contain information about the form, including background information on what you need to fill it, what you'll need to do, if anything, to provide additional verification, and what to do with the form once it's been filled out.
+%p
+  This page will then take the user to an HTML form page that they can fill out with their information.  Or maybe that's just part of this page. I like it all being a part of this page.
+%p
+  So down here, we will iterate through the form fields and create input fields to fill out the form.
+= form_tag forms_path do
+  = hidden_field_tag "form_id", @form.id
+  - @form.form_fields.each do |form_field|
+    - if form_field.field_type == "text"
+      %p
+        = label_tag "form[#{form_field.name}]", form_field.name.humanize
+        = text_field_tag "form[#{form_field.name}]"
+    - else
+      %p
+        "#{form_field.name} with type: #{form_field.type}"
+  = submit_tag 'Submit'
