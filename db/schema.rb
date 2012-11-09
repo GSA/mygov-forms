@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109042252) do
+ActiveRecord::Schema.define(:version => 20121109104028) do
 
   create_table "agencies", :force => true do |t|
     t.string   "name"
@@ -24,8 +24,13 @@ ActiveRecord::Schema.define(:version => 20121109042252) do
     t.string   "name"
     t.string   "field_type"
     t.integer  "form_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.string   "label"
+    t.text     "description"
+    t.boolean  "is_required", :default => false
+    t.text     "options"
+    t.boolean  "multiple",    :default => false
   end
 
   add_index "form_fields", ["form_id"], :name => "index_form_fields_on_form_id"
