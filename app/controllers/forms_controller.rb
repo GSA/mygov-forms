@@ -1,4 +1,5 @@
 class FormsController < ApplicationController
+  before_filter :assign_submission, :only => [:submitted, :pdf]
   
   def index
     @forms = Form.all
@@ -23,6 +24,21 @@ class FormsController < ApplicationController
   end
 
   def submitted
+  end
+  
+  def pdf
+    pdf = @submission.to_pdf
+    if pdf
+      send_data pdf, :type => "application/pdf", :filename => File.basename(@submission.form.pdf.url)
+    else
+      flash[:error] = "There was an error generating your PDF."
+      render :submitted
+    end
+  end
+  
+  private
+  
+  def assign_submission
     @submission = Submission.find_by_id(params[:id])
   end
 end

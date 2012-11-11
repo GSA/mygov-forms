@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109104028) do
+ActiveRecord::Schema.define(:version => 20121111015021) do
 
   create_table "agencies", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,29 @@ ActiveRecord::Schema.define(:version => 20121109104028) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "pdf_fields", :force => true do |t|
+    t.string   "name"
+    t.integer  "x"
+    t.integer  "y"
+    t.integer  "page_number"
+    t.integer  "pdf_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "form_field_id"
+  end
+
+  add_index "pdf_fields", ["form_field_id"], :name => "index_pdf_fields_on_form_field_id"
+  add_index "pdf_fields", ["pdf_id"], :name => "index_pdf_fields_on_pdf_id"
+
+  create_table "pdfs", :force => true do |t|
+    t.string   "url"
+    t.integer  "form_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "pdfs", ["form_id"], :name => "index_pdfs_on_form_id"
 
   create_table "submissions", :force => true do |t|
     t.integer  "form_id"
