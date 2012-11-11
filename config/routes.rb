@@ -1,7 +1,7 @@
 MygovForms::Application.routes.draw do
   resources :forms, :only => [:index, :show, :create]
   get "forms/submissions/:id" => 'forms#submitted', :as => :submitted_form
-  post "forms/submissions/:id/pdf" => 'forms#pdf', :as => :pdf_form
+  get "forms/submissions/:id/pdf" => 'forms#pdf', :as => :pdf_form
   namespace :api do
     resources :forms, :only => [:index, :show, :create]
   end
