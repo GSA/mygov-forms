@@ -65,3 +65,5 @@ MygovForms::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
+
+PDF_FILLER_FILL_URL = "http://localhost:4567/fill"

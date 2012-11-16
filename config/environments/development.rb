@@ -35,3 +35,5 @@ MygovForms::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 end
+
+PDF_FILLER_FILL_URL = "http://localhost:4567/fill"
