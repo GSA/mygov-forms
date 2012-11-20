@@ -25,6 +25,14 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'simplecov', :require => false
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
