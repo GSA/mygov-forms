@@ -8,4 +8,8 @@ class Form < ActiveRecord::Base
   def as_json(options = {})
     super(options.merge(:only => [:id, :number, :title]))
   end
+  
+  def to_param
+    self.number.parameterize
+  end
 end

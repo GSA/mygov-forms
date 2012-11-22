@@ -54,6 +54,7 @@ describe "API", :type => :request do
         parsed_json["status"].should == "OK"
         parsed_json["message"].should == "Your form was successfully submitted."
         parsed_json["submission_id"].should_not be_nil
+        parsed_json["submission_id"].size.should == 40
         Submission.last.data[:text_field].should == "Test"
         Submission.last.data[:select_field].should be_blank
       end

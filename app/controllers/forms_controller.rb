@@ -6,7 +6,7 @@ class FormsController < ApplicationController
   end
 
   def show
-    @form = Form.find(params[:id])
+    @form = Form.find_by_number(params[:id])
   end
   
   def create
