@@ -1,6 +1,7 @@
 class Pdf < ActiveRecord::Base
   belongs_to :form
   has_many :pdf_fields
+  validates_presence_of :url
   attr_accessible :url
   URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
   
