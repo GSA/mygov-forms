@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121111015021) do
+ActiveRecord::Schema.define(:version => 20121122023232) do
 
   create_table "agencies", :force => true do |t|
     t.string   "name"
@@ -68,10 +68,12 @@ ActiveRecord::Schema.define(:version => 20121111015021) do
   create_table "submissions", :force => true do |t|
     t.integer  "form_id"
     t.text     "data"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.string   "guid",       :limit => 40
   end
 
   add_index "submissions", ["form_id"], :name => "index_submissions_on_form_id"
+  add_index "submissions", ["guid"], :name => "index_submissions_on_guid"
 
 end

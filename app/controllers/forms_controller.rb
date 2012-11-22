@@ -39,6 +39,6 @@ class FormsController < ApplicationController
   private
   
   def assign_submission
-    @submission = Submission.find(params[:id])
+    @submission = Submission.find_by_guid(params[:id])
   end
 end
