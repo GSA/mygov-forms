@@ -6,6 +6,8 @@ class FormField < ActiveRecord::Base
   serialize :options
   
   def as_json(options = {})
-    super(options.merge(:only => [:name, :field_type, :label, :description, :is_required, :multiple]).merge(:options => self.options.each{|k,v| {k: v}}))
+    super_options = options.merge(:only => [:name, :field_type, :label, :description, :is_required, :multiple])
+    super_options.merge!(:options => self.options.each{|k,v| {k: v}}) if self.options.present?
+    super(super_options)
   end
 end

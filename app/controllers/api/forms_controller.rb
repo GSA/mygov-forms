@@ -6,7 +6,7 @@ class Api::FormsController < Api::ApiController
   end
   
   def show
-    form = Form.find_by_id(params[:id])
+    form = Form.find(params[:id])
     render :json => form.as_json.merge(:form_fields => form.form_fields.as_json)
   end
   
