@@ -2,16 +2,20 @@ class Api::FormsController < Api::ApiController
   
   def index
     forms = Form.all
-    render :json => forms
+    render :json => {:status => "OK", :forms => forms }
   end
   
   def show
-    form = Form.find(params[:id])
-    render :json => form.as_json.merge(:form_fields => form.form_fields.as_json)
+    form = Form.find_by_id(params[:id])
+    if form
+      render :json => {:status => "OK", :form => form.as_json.merge(:form_fields => form.form_fields.as_json)}
+    else
+      render :json => {:status => "Error", :message => "Form with id=#{params[:id]} not found"}, :status => 404
+    end
   end
   
   def create
-    unless params[:form_id]      
+    unless params[:form_id]
       render :json => {:status => "Error", :message => "Form submission invalid: missing form id"}, :status => 406
     else
       submission = Submission.new
