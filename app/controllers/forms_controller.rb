@@ -6,16 +6,16 @@ class FormsController < ApplicationController
   end
 
   def show
-    @form = Form.find_by_id(params[:id])
+    @form = Form.find(params[:id])
   end
   
   def create
     @submission = Submission.new
     @submission.form_id = params[:form_id]
-    @data = {}
-    @submission.data = params[:form].each{|key, value| @data.merge!(key: value) }
+    data = {}
+    @submission.data = params[:form].each{|key, value| data.merge!(key: value) } if params[:form]
     if @submission.save
-      flash[:notice] = "Your form has successfully been saved"
+      flash[:notice] = "Your form has been saved successfully."
       redirect_to submitted_form_path(@submission)
     else
       flash[:error] = "Something went horribly wrong."
@@ -39,6 +39,6 @@ class FormsController < ApplicationController
   private
   
   def assign_submission
-    @submission = Submission.find_by_id(params[:id])
+    @submission = Submission.find(params[:id])
   end
 end

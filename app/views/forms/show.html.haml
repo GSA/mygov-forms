@@ -17,7 +17,7 @@
           = text_field_tag "form[#{form_field.name}]"
         - elsif form_field.field_type == "select"
           = label_tag "form[#{form_field.name}]", form_field.label || form_field.name.humanize
-          = select_tag "form[#{form_field.name}]", options_for_select(form_field.options)
+          = select_tag "form[#{form_field.name}]", options_for_select(form_field.options), :include_blank => true
         - elsif form_field.field_type == "date"
           = label_tag "form[#{form_field.name}]", form_field.label || form_field.name.humanize
           = select_date nil, :prefix => "form[#{form_field.name}]", :prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'}

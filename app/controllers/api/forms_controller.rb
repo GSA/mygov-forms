@@ -16,7 +16,8 @@ class Api::FormsController < Api::ApiController
     else
       submission = Submission.new
       submission.form_id = params[:form_id]
-      submission.data = params[:form].each{|key, value| {key: value} } if params[:form]
+      data = {}
+      submission.data = params[:form].each{|key, value| data.merge!(key: value) } if params[:form]
       if submission.save
         render :json => { :status => "OK", :message => "Your form was successfully submitted.", :submission_id => submission.id }
       else

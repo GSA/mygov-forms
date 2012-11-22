@@ -33,6 +33,8 @@ describe "Forms" do
         click_button "Submit"
         page.should have_content "Your form has been submitted"
         page.should have_no_button "Download as PDF"
+        Submission.last.data[:text_field].should == "America"
+        Submission.last.data[:select_field].should be_blank
       end
       
       context "when the form has a PDF associated with it" do
