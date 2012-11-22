@@ -11,18 +11,17 @@ class Api::FormsController < Api::ApiController
   end
   
   def create
-    submission = Submission.new
-    if params[:form_id]
-      submission.form_id = params[:form_id]
-    else
+    unless params[:form_id]      
       render :json => {:status => "Error", :message => "Form submission invalid: missing form id"}, :status => 406
-    end
-    data = {}
-    submission.data = params[:form].each{|key, value| {key: value} }
-    if submission.save
-      render :json => { :status => "OK", :message => "Your form was successfully submitted.", :submission_id => submission.id }
     else
-      render :json => { :status => "Error", :message => submission.errors }, status => 406
+      submission = Submission.new
+      submission.form_id = params[:form_id]
+      submission.data = params[:form].each{|key, value| {key: value} } if params[:form]
+      if submission.save
+        render :json => { :status => "OK", :message => "Your form was successfully submitted.", :submission_id => submission.id }
+      else
+        render :json => { :status => "Error", :message => submission.errors }, status => 406
+      end
     end
   end
 end

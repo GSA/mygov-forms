@@ -30,4 +30,27 @@ describe "API", :type => :request do
       parsed_json["form_fields"].first["field_type"].should == "text"
     end
   end
+  
+  describe "POST /api/forms" do
+    context "when valid form information is submitted" do
+      it "should save the form as a submission" do
+        post "/api/forms", {:form_id => @sample_form_1.id, :form => {:text_field => 'Test'}}
+        response.code.should == "200"
+        parsed_json = JSON.parse(response.body)
+        parsed_json["status"].should == "OK"
+        parsed_json["message"].should == "Your form was successfully submitted."
+        parsed_json["submission_id"].should_not be_nil
+      end
+    end
+    
+    context "when no form id is submitted" do
+      it "should return an error message" do
+        post "/api/forms", {:form => {:text_field => 'Test'}}
+        response.code.should == "406"
+        parsed_json = JSON.parse(response.body)
+        parsed_json["status"].should == "Error"
+        parsed_json["message"].should == "Form submission invalid: missing form id"
+      end
+    end    
+  end
 end
