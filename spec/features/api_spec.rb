@@ -24,7 +24,7 @@ describe "API", :type => :request do
   describe "GET /api/forms/:id" do
     context "whent a form exists for the id supplied" do
       it "should return a JSON representation of the form and all its fields" do
-        get "/api/forms/#{@sample_form_1.id}"
+        get "/api/forms/#{@sample_form_1.to_param}"
         response.code.should == "200"
         parsed_json = JSON.parse(response.body)
         parsed_json["status"].should == "OK"
@@ -70,4 +70,60 @@ describe "API", :type => :request do
       end
     end    
   end
+  
+  describe "POST /api/forms/:id/pdf/fill" do
+    before do
+      @pdf = Pdf.create!(:url => "http://example.gov/test.pdf")
+      @pdf.form = @sample_form_1
+      @pdf.save!
+    end
+    
+    context "when the number provided does not match a form" do
+      it "should return an error" do
+        post "/api/forms/ss-5/pdf/fill"
+        response.code.should == "404"
+        parsed_json = JSON.parse(response.body)
+        parsed_json["status"].should == "Error"
+        parsed_json["message"].should == "Form with number: ss-5 not found."
+      end
+    end
+    
+    context "when the number matches a form, but the form does not have a PDF associated with it" do
+      it "should return an error" do
+        post "/api/forms/s-2/pdf/fill"
+        response.code.should == "404"
+        parsed_json = JSON.parse(response.body)
+        parsed_json["status"] == "Error"
+        parsed_json["message"] == "No PDF associated with that form."
+      end
+    end
+    
+    context "when the number matches a form, and everything works out fine" do
+      context "when the PDF filling works" do
+        before do
+          Pdf.any_instance.stub(:fill_in).and_return "THIS IS A FAKE PDF"
+        end
+      
+        it "should return a filled in PDF" do
+          post "/api/forms/#{@sample_form_1.to_param}/pdf/fill", {:data => {}}
+          response.code.should == "200"
+          response.body.should == "THIS IS A FAKE PDF"
+        end
+      end
+      
+      context "when the PDF filling does not work" do
+        before do
+          Pdf.any_instance.stub(:fill_in).and_raise "Error filling PDF"
+        end
+        
+        it "should return an error" do
+          post "/api/forms/#{@sample_form_1.to_param}/pdf/fill", {:data => {}}
+          response.code.should == "500"
+          parsed_json = JSON.parse(response.body)
+          parsed_json["status"].should == "Error"
+          parsed_json["message"].should == "Error filling PDF"
+        end
+      end
+    end
+  end 
 end

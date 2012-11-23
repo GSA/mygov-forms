@@ -3,7 +3,11 @@ MygovForms::Application.routes.draw do
   get "forms/submissions/:id" => 'forms#submitted', :as => :submitted_form
   get "forms/submissions/:id/pdf" => 'forms#pdf', :as => :pdf_form
   namespace :api do
-    resources :forms, :only => [:index, :show, :create]
+    resources :forms, :only => [:index, :show, :create] do
+      member do
+        post "/pdf/fill" => 'forms#fill_pdf', :as => :fill_pdf
+      end
+    end
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
