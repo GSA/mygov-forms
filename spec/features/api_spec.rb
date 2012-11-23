@@ -108,6 +108,8 @@ describe "API", :type => :request do
           post "/api/forms/#{@sample_form_1.to_param}/pdf/fill", {:data => {}}
           response.code.should == "200"
           response.body.should == "THIS IS A FAKE PDF"
+          response.content_type.should == "application/pdf"
+          response.header["Content-Disposition"].should =~ /filename=\"test\.pdf/
         end
       end
       
