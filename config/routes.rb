@@ -2,11 +2,12 @@ MygovForms::Application.routes.draw do
   resources :forms, :only => [:index, :show, :create]
   get "forms/submissions/:id" => 'forms#submitted', :as => :submitted_form
   get "forms/submissions/:id/pdf" => 'forms#pdf', :as => :pdf_form
-  namespace :api do
+  namespace :api, :defaults => {:format => :json} do
     resources :forms, :only => [:index, :show, :create] do
       member do
-        post "/pdf/fill" => 'forms#fill_pdf', :as => :fill_pdf
+        post "fill_pdf"
       end
+      resources :submissions, :only => [:show, :create]
     end
   end
   # The priority is based upon order of creation:
