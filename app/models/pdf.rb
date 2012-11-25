@@ -16,12 +16,17 @@ class Pdf < ActiveRecord::Base
     end.flatten.sort.join('&')
   }
   
+  # Takes form data, transforms to PDF fields, and then submits to PDF Filler to fill in.
   def fill_in(data)
     massaged_data = {}
     data.each do |key, value|
-      massaged_key = URI.encode(key, URI_REGEX)
-      massaged_data.merge!(massaged_key => URI.encode(data[key], URI_REGEX))
+      form_field = self.form.form_fields.find_by_name(key)
+      if form_field and form_field.pdf_field
+        massaged_data[URI.encode(form_field.pdf_field.name, URI_REGEX)] = URI.encode(value, URI_REGEX) if form_field.pdf_field.is_fillable?
+        massaged_data["#{form_field.pdf_field.x},#{form_field.pdf_field.y},#{form_field.pdf_field.page_number}"] = URI.encode(value, URI_REGEX) if !form_field.pdf_field.is_fillable?
+      end
     end
+    puts massaged_data.inspect
     body = {:pdf => self.url}.merge(massaged_data)
     pdf_response = self.class.post(PDF_FILLER_FILL_URL, {:body => body})
     if pdf_response.code == 200
