@@ -22,6 +22,6 @@
           = label_tag "form[#{form_field.name}]", form_field.label || form_field.name.humanize
           = select_date nil, :prefix => "form[#{form_field.name}]", :prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'}
         - else
-          "#{form_field.name} with type: #{form_field.type}"
+          "#{form_field.name} with type: #{form_field.field_type}"
       %p
         = submit_tag 'Submit'

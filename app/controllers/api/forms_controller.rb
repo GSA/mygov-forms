@@ -26,6 +26,7 @@ class Api::FormsController < Api::ApiController
           pdf_file = form.pdf.fill_in(params[:data])
           send_data pdf_file, :type => "application/pdf", :filename => File.basename(form.pdf.url)
         rescue Exception => e
+          Rails.logger.error(e)
           render :json => {:status => "Error", :message => e.message }, :status => 500
         end
       end
