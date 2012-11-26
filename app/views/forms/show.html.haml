@@ -8,20 +8,11 @@
       This page will then take the user to an HTML form page that they can fill out with their information.  Or maybe that's just part of this page. I like it all being a part of this page.
     %p
       So down here, we will iterate through the form fields and create input fields to fill out the form.
-    = form_tag forms_path do
-      = hidden_field_tag "form_id", @form.id
-      - @form.form_fields.each do |form_field|
-        %p
-        - if form_field.field_type == "text"
-          = label_tag "form[#{form_field.name}]", form_field.label || form_field.name.humanize
-          = text_field_tag "form[#{form_field.name}]"
-        - elsif form_field.field_type == "select"
-          = label_tag "form[#{form_field.name}]", form_field.label || form_field.name.humanize
-          = select_tag "form[#{form_field.name}]", options_for_select(form_field.options), :include_blank => true
-        - elsif form_field.field_type == "date"
-          = label_tag "form[#{form_field.name}]", form_field.label || form_field.name.humanize
-          = select_date nil, :prefix => "form[#{form_field.name}]", :prompt => {:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'}
-        - else
-          "#{form_field.name} with type: #{form_field.field_type}"
-      %p
-        = submit_tag 'Submit'
+    %p
+      = semantic_form_for "data", :url => form_submissions_path(@form) do |f|
+        = f.inputs do
+          = f.input :form_id, :as => :hidden, :input_html => { :value => @form.id }
+          - @form.form_fields.each do |form_field|
+            = form_input f, form_field
+        = f.actions do
+          = f.action :submit, :as => :button, :label => "Submit Form"

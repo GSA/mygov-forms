@@ -11,4 +11,5 @@
  *= require_tree ./mff
  *= require_self
  *= require_tree .
+ *= require formtastic
  */

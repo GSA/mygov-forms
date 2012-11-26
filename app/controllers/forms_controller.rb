@@ -1,44 +1,84 @@
 class FormsController < ApplicationController
-  before_filter :assign_submission, :only => [:submitted, :pdf]
-  
+  # GET /forms
+  # GET /forms.json
   def index
     @forms = Form.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @forms }
+    end
   end
 
+  # GET /forms/1
+  # GET /forms/1.json
   def show
     @form = Form.find_by_number(params[:id])
-  end
-  
-  def create
-    @submission = Submission.new
-    @submission.form_id = params[:form_id]
-    data = {}
-    @submission.data = params[:form].each{|key, value| data.merge!(key: value) } if params[:form]
-    if @submission.save
-      flash[:notice] = "Your form has been saved successfully."
-      redirect_to submitted_form_path(@submission)
-    else
-      flash[:error] = "Something went horribly wrong."
-      render :show
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @form }
     end
   end
 
-  def submitted
-  end
-  
-  def pdf
-    pdf = @submission.to_pdf
-    if pdf
-      send_data pdf, :type => "application/pdf", :filename => File.basename(@submission.form.pdf.url)
-    else
-      flash[:error] = "There was an error generating your PDF."
-      render :submitted
+  # GET /forms/new
+  # GET /forms/new.json
+  def new
+    @form = Form.new
+    @form.form_fields = @form.form_fields.push FormField.new
+            
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @form }
     end
   end
-  
-  private
-  
-  def assign_submission
-    @submission = Submission.find_by_guid(params[:id])
+
+  # GET /forms/1/edit
+  def edit
+    @form = Form.find_by_number(params[:id])
+  end
+
+  # POST /forms
+  # POST /forms.json
+  def create
+    @form = Form.new(params[:form])
+
+    respond_to do |format|
+      if @form.save
+        format.html { redirect_to @form, notice: 'Form was successfully created.' }
+        format.json { render json: @form, status: :created, location: @form }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @form.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /forms/1
+  # PUT /forms/1.json
+  def update
+    @form = Form.find_by_number(params[:id])
+
+    respond_to do |format|
+      if @form.update_attributes(params[:form])
+        format.html { redirect_to @form, notice: 'Form was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @form.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /forms/1
+  # DELETE /forms/1.json
+  def destroy
+    @form = Form.find_by_number(params[:id])
+    @form.destroy
+
+    respond_to do |format|
+      format.html { redirect_to forms_url }
+      format.json { head :no_content }
+    end
   end
 end

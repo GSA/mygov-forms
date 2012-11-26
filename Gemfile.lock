@@ -40,6 +40,7 @@ GEM
       xpath (~> 1.0.0)
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
+    cocoon (1.1.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -53,6 +54,8 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.2.0)
+    formtastic (2.2.1)
+      actionpack (>= 3.0)
     haml (3.1.7)
     haml-rails (0.3.5)
       actionpack (>= 3.1, < 4.1)
@@ -158,8 +161,10 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  cocoon
   coffee-rails (~> 3.2.1)
   database_cleaner
+  formtastic
   haml-rails
   httparty
   jquery-rails
