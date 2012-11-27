@@ -1,23 +1,11 @@
 class SubmissionsController < ApplicationController
-  # GET /submissions
-  # GET /submissions.json
-  def index
-    @submissions = Submission.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @submissions }
-    end
-  end
-
-  # GET /submissions/1
-  # GET /submissions/1.json
+  before_filter :assign_form
+  before_filter :assign_submission, :only => [:show]
+  
   def show
-    @submission = Submission.find(params[:id])
-
+    @submission = Submission.find_by_guid(params[:id])
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @submission }
+      format.html
       format.pdf {
         pdf = @submission.to_pdf
         if pdf
@@ -30,32 +18,13 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # GET /submissions/new
-  # GET /submissions/new.json
-  def new
-    @submission = Submission.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @submission }
-    end
-  end
-
-  # GET /submissions/1/edit
-  def edit
-    @submission = Submission.find(params[:id])
-  end
-
-  # POST /submissions
-  # POST /submissions.json
   def create
-    @submission = Submission.new
-    @submission.form_id = params[:form_id]
+    @submission = @form.submissions.new
     data = {}
     @submission.data = params[:data].each{|key, value| data.merge!(key: value) } if params[:data]
     if @submission.save
       flash[:notice] = "Your form has been submitted."
-      redirect_to form_submission_path :id => @submission.id, :form_id => @submission.form_id
+      redirect_to form_submission_path(@form, @submission)
     else
       flash[:error] = "Something went horribly wrong."
       render :show
@@ -63,36 +32,13 @@ class SubmissionsController < ApplicationController
 
   end
 
-  # PUT /submissions/1
-  # PUT /submissions/1.json
-  def update
-    @submission = Submission.find(params[:id])
-
-    respond_to do |format|
-      if @submission.update_attributes(params[:submission])
-        format.html { redirect_to @submission, notice: 'Submission was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @submission.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /submissions/1
-  # DELETE /submissions/1.json
-  def destroy
-    @submission = Submission.find(params[:id])
-    @submission.destroy
-
-    respond_to do |format|
-      format.html { redirect_to submissions_url }
-      format.json { head :no_content }
-    end
+  private
+  
+  def assign_form
+    @form = Form.find_by_number(params[:form_id])
   end
   
   def assign_submission
     @submission = Submission.find_by_guid(params[:id])
   end
-
 end

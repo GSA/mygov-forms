@@ -26,6 +26,7 @@ class Pdf < ActiveRecord::Base
         massaged_data["#{form_field.pdf_field.x},#{form_field.pdf_field.y},#{form_field.pdf_field.page_number}"] = URI.encode(value, URI_REGEX) if !form_field.pdf_field.is_fillable?
       end
     end
+    puts massaged_data.inspect
     body = {:pdf => self.url}.merge(massaged_data)
     pdf_response = self.class.post(PDF_FILLER_FILL_URL, {:body => body})
     if pdf_response.code == 200
