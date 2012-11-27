@@ -7,12 +7,12 @@ class SubmissionsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf {
-        pdf = @submission.to_pdf
+        pdf = nil #@submission.to_pdf
         if pdf
           send_data pdf, :type => "application/pdf", :filename => File.basename(@submission.form.pdf.url)
         else
           flash[:error] = "There was an error generating your PDF."
-          render :submitted
+          redirect_to :back
         end
       }
     end
