@@ -1,4 +1,6 @@
 MygovForms::Application.routes.draw do
+  devise_for :users
+
   resources :forms, :only => [:index, :show] do
     resources :submissions, :only => [:show, :create]
   end
