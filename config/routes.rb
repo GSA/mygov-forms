@@ -1,7 +1,8 @@
 MygovForms::Application.routes.draw do
-  resources :forms, :only => [:index, :show] do
-    resources :submissions, :only => [:show, :create]
+  resources :forms do
+    resources :submissions
   end
+
   namespace :api, :defaults => {:format => :json} do
     resources :forms, :only => [:index, :show, :create] do
       member do
@@ -10,5 +11,7 @@ MygovForms::Application.routes.draw do
       resources :submissions, :only => [:show, :create]
     end
   end
+
   root :to => 'forms#index'
+  
 end
