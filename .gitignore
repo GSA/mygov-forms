@@ -14,3 +14,5 @@
 /log/*.log
 /tmp
 /coverage
+/config/deploy.rb
+/config/database.yml
