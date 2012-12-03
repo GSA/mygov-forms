@@ -35,3 +35,5 @@ MygovForms::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 end
+
+PDF_FILLER_FILL_URL = "http://localhost:4567/fill"
