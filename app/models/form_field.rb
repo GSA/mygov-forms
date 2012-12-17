@@ -10,4 +10,17 @@ class FormField < ActiveRecord::Base
     super_options.merge!(:options => self.options.each{|k,v| {k: v}}) if self.options.present?
     super(super_options)
   end
+  
+  def formtastic_field_type
+    case self.field_type
+    when "date"
+      "date_select"
+    when "time"
+      "time_select"
+    when "datetime"
+      "datetime_select"
+    else
+      self.field_type
+    end
+  end  
 end
