@@ -11,8 +11,8 @@ namespace :mygov do
         form = Form.find_or_create_by_number(parsed_json["form"]["number"], :title => parsed_json["form"]["title"])
         pdf = form.build_pdf(parsed_json["form"]["pdf"]) if parsed_json["form"]["pdf"]
         form.form_fields.destroy_all
-        parsed_json["form"]["form_fields"].each do |form_field|
-          new_form_field = form.form_fields.create!(form_field.reject{|k,v| k == "pdf_field"})
+        parsed_json["form"]["form_fields"].each_with_index do |form_field, index|
+          new_form_field = form.form_fields.create!(form_field.reject{|k,v| k == "pdf_field"}.merge(:position => index + 1))
           if form_field["pdf_field"]
             pdf_field = pdf.pdf_fields.create!(form_field["pdf_field"].first) if form_field["pdf_field"].is_a?(Array)
             pdf_field = pdf.pdf_fields.create!(form_field["pdf_field"]) unless form_field["pdf_field"].is_a?(Array)

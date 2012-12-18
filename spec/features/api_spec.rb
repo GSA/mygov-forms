@@ -15,8 +15,8 @@ describe "API", :type => :request do
       get "/api/forms"
       response.code.should == "200"
       parsed_json = JSON.parse(response.body)
-      parsed_json.first.should == {"id" => 1, "title" => "Sample Form 1", "number" => 'S-1'}
-      parsed_json.last.should == {"id" => 2, "title" => "Sample Form 2", "number" => 'S-2'}
+      parsed_json.first.should == {"title" => "Sample Form 1", "number" => 'S-1'}
+      parsed_json.last.should == {"title" => "Sample Form 2", "number" => 'S-2'}
     end
   end
   
