@@ -16,3 +16,4 @@
 /coverage
 /config/deploy.rb
 /config/database.yml
+/config/initializers/01_mygov_forms.rb
