@@ -5,6 +5,7 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'json', "1.7.7"
 gem 'mysql2'
 gem 'jquery-rails'
 gem 'haml-rails'
