@@ -17,8 +17,6 @@ role :app, "#{domain}"                          # This may be the same as your `
 role :db,  "#{domain}", :primary => true        # This is where Rails migrations will run
 
 before 'deploy:assets:precompile', 'deploy:symlink_db'
-before "deploy:create_symlink", "deploy:web:disable"
-after "deploy:restart", "deploy:web:enable"
 after "deploy:restart", "deploy:cleanup"
 
 # If you are using Passenger mod_rails uncomment this:
