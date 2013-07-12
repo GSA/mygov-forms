@@ -12,11 +12,11 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: mygov-forms_development
+  database: mygov_forms_development
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -25,18 +25,18 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: mygov-forms_test
+  database: mygov_forms_test
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
+  host: localhost
 
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: mygov-forms_production
+  database: mygov_forms_production
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
+  host: localhost

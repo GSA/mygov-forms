@@ -13,6 +13,6 @@
         = f.inputs do
           = f.input :form_id, :as => :hidden, :input_html => { :value => @form.id }
           - @form.form_fields.each do |form_field|
-            = form_input f, form_field
+            = form_input(f, form_field)
         = f.actions do
           = f.action :submit, :as => :button, :label => "Submit Form"

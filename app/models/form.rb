@@ -1,5 +1,5 @@
 class Form < ActiveRecord::Base
-  has_many :form_fields
+  has_many :form_fields, :order => '-position DESC, id ASC'
   has_one :pdf
   has_many :submissions
   attr_accessible :number, :title
@@ -9,7 +9,7 @@ class Form < ActiveRecord::Base
   accepts_nested_attributes_for :form_fields, :reject_if => :all_blank, :allow_destroy => true
   
   def as_json(options = {})
-    super(options.merge(:only => [:id, :number, :title]))
+    super(options.merge(:only => [:number, :title]))
   end
   
   def to_param

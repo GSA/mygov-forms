@@ -1,0 +1,1 @@
+RAILS_SECRET_TOKEN = "run 'rake secret' and put the output here"
