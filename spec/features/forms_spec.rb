@@ -49,7 +49,7 @@ describe "Forms" do
         it "should allow the user to download a PDF version of their form if available" do
           visit root_path
           click_link 'Sample Form 1 (S-1)'
-          fill_in 'A Text Field', :with => 'America'
+          fill_in 'data_text_field', :with => 'America'
           click_button "Submit"
           page.should have_link "Download as PDF"
         end

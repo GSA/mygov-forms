@@ -49,8 +49,10 @@ class SubmissionsController < ApplicationController
   # POST /submissions
   # POST /submissions.json
   def create
+    form = Form.find_by_number(params[:form_id])
     @submission = Submission.new
-    @submission.form_id = params[:form_id]
+    @submission.form = form
+
     data = {}
     @submission.data = params[:data].each{|key, value| data.merge!(key: value) } if params[:data]
     if @submission.save

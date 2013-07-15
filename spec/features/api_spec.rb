@@ -21,7 +21,7 @@ describe "API", :type => :request do
   end
   
   describe "GET /api/forms/:id" do
-    context "whent a form exists for the id supplied" do
+    context "when a form exists for the id supplied" do
       it "should return a JSON representation of the form and all its fields" do
         get "/api/forms/#{@sample_form_1.to_param}"
         response.code.should == "200"
