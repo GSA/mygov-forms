@@ -1,12 +1,33 @@
-!!!
-%html
-  %head
-    %title MyGov Forms
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
-  %body
-    %ul.nav-bar
-      %li.active
-        = link_to 'MyGov Forms', root_path
-    = yield
+!!! 5
+/ paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 7 ] <html class=\"ie6\" lang=\"en\">
+/[if IE 7 ]    <html class=\"ie7\" lang=\"en\">
+/[if IE 8 ]    <html class=\"ie8\" lang=\"en\">
+/[if IE 9 ]    <html class=\"ie9\" lang=\"en\">
+/[if (gt IE 9)|!(IE)] <!--> <html lang=\"en\">
+
+%head
+  %meta{ :charset => "utf-8" }
+
+  -# Uncomment to make IE8 render like IE7
+  -# meta http-equiv="X-UA-Compatible" content="IE=7"
+
+  -# Set the viewport width to device width for mobile
+  %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+
+  %title= content_for?(:title) ? yield(:title) : "MyUSA Forms"
+
+  = stylesheet_link_tag "application"
+  = javascript_include_tag "vendor/custom.modernizr"
+  = csrf_meta_tag
+
+%body
+  %nav.top-bar
+    %ul.title-area
+      %li.name
+        %h1
+          = link_to "MyUSA Forms", root_path
+  
+  = yield
+
+  = javascript_include_tag "application"

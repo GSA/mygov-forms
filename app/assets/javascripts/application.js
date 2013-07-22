@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree ./mff
+//= require foundation
 //= require_tree .
 //= require cocoon
+
+$(document).foundation();
+$(document).foundation();
