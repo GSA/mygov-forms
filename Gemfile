@@ -24,8 +24,17 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development do
+  gem 'guard-livereload'
+  gem 'thin'
+end
+
 group :development, :test do
+  gem 'guard'
+  gem 'guard-rspec'
+  gem "parallel_tests"
   gem 'rspec-rails'
+  gem "zeus-parallel_tests"
 end
 
 group :test do
@@ -35,6 +44,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', :require => false
   gem 'webmock'
+  gem 'libnotify'
 end
 
 # To use ActiveModel has_secure_password

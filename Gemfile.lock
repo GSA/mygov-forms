@@ -47,6 +47,7 @@ GEM
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
     cocoon (1.1.1)
+    coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -55,14 +56,33 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     crack (0.3.1)
+    daemons (1.1.9)
     database_cleaner (0.9.1)
     diff-lcs (1.1.3)
+    em-websocket (0.5.0)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.5.3)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.2.0)
+    formatador (0.2.4)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    guard (1.8.1)
+      formatador (>= 0.2.4)
+      listen (>= 1.0.0)
+      lumberjack (>= 1.0.2)
+      pry (>= 0.9.10)
+      thor (>= 0.14.6)
+    guard-livereload (1.4.0)
+      em-websocket (>= 0.5.0)
+      guard (>= 1.8.0)
+      multi_json (~> 1.7)
+    guard-rspec (2.5.4)
+      guard (>= 1.1)
+      rspec (~> 2.11)
     haml (3.1.7)
     haml-rails (0.3.5)
       actionpack (>= 3.1, < 4.1)
@@ -71,6 +91,7 @@ GEM
       railties (>= 3.1, < 4.1)
     highline (1.6.15)
     hike (1.2.2)
+    http_parser.rb (0.5.3)
     httparty (0.9.0)
       multi_json (~> 1.0)
       multi_xml
@@ -82,11 +103,19 @@ GEM
     json (1.7.7)
     launchy (2.1.2)
       addressable (~> 2.3)
+    libnotify (0.8.1)
+      ffi (>= 1.0.11)
     libwebsocket (0.1.6.1)
       websocket
+    listen (1.2.2)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+      rb-kqueue (>= 0.2)
+    lumberjack (1.0.4)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.1)
     mime-types (1.23)
     multi_json (1.7.5)
     multi_xml (0.5.1)
@@ -99,7 +128,14 @@ GEM
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     nokogiri (1.5.5)
+    parallel (0.7.1)
+    parallel_tests (0.15.0)
+      parallel
     polyglot (0.3.3)
+    pry (0.9.12.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -123,8 +159,17 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.0.4)
+    rb-fsevent (0.9.3)
+    rb-inotify (0.9.0)
+      ffi (>= 0.5.0)
+    rb-kqueue (0.2.0)
+      ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rspec (2.12.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
     rspec-core (2.12.0)
     rspec-expectations (2.12.0)
       diff-lcs (~> 1.1.3)
@@ -153,11 +198,16 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
+    slop (3.4.5)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.18.1)
     tilt (1.4.1)
     treetop (1.4.12)
@@ -173,6 +223,11 @@ GEM
     websocket (1.0.3)
     xpath (1.0.0)
       nokogiri (~> 1.3)
+    zeus (0.13.3)
+      method_source (>= 0.6.7)
+    zeus-parallel_tests (0.2.4)
+      parallel_tests (>= 0.11.3)
+      zeus (~> 0.13.3)
 
 PLATFORMS
   ruby
@@ -184,16 +239,23 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   database_cleaner
   formtastic
+  guard
+  guard-livereload
+  guard-rspec
   haml-rails
   httparty
   jquery-rails
   json (= 1.7.7)
   launchy
+  libnotify
   mysql2
+  parallel_tests
   rails (= 3.2.13)
   rspec-rails
   sass-rails (~> 3.2.3)
   shoulda-matchers
   simplecov
+  thin
   uglifier (>= 1.0.3)
   webmock
+  zeus-parallel_tests
