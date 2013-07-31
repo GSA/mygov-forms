@@ -11,8 +11,11 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'httparty'
 gem 'formtastic'
+gem 'rolify'
+gem 'cancan'
 gem "cocoon"
 gem 'capistrano'
+gem 'omniauth-myusa', :git => 'https://github.com/GSA-OCSIT/omniauth-myusa.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

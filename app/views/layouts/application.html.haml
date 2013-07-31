@@ -27,6 +27,21 @@
       %li.name
         %h1
           = link_to "MyUSA Forms", root_path
+    %section.top-bar-section.right
+      %ul.right
+        - if user_signed_in?
+          %li.not-click
+            = link_to 'Currently logged in as:', '#'
+        %li.divider.hide-for-small
+        - if !user_signed_in?
+          %li
+            = link_to 'MyUSA Account Login', signin_path
+        - else
+          %li.not-click
+            = link_to current_user.email, '#'
+          %li.divider.hide-for-small
+          %li
+            = link_to 'Logout', signout_path
   
   = yield
 
