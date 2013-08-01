@@ -37,6 +37,7 @@ group :development, :test do
   gem "parallel_tests"
   gem 'rspec-rails'
   gem "zeus-parallel_tests"
+  gem 'pry'
 end
 
 group :test do
