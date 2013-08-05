@@ -16,6 +16,7 @@ gem 'cancan'
 gem "cocoon"
 gem 'capistrano'
 gem 'omniauth-myusa', :git => 'https://github.com/GSA-OCSIT/omniauth-myusa.git'
+gem 'country-select'
 
 # Gems used only for assets and not required
 # in production environments by default.

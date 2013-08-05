@@ -71,6 +71,7 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
+    country-select (1.1.1)
     crack (0.3.1)
     daemons (1.1.9)
     database_cleaner (0.9.1)
@@ -278,6 +279,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 3.2.1)
   compass-rails
+  country-select
   database_cleaner
   formtastic
   guard
