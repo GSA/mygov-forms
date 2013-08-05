@@ -1,5 +1,38 @@
 # encoding: utf-8
 
+# http://www.cowboycoded.com/2011/07/18/patching-formtastic-to-append-html-to-input-list-elements/
+module Formtastic
+  module Inputs
+    module Base
+      module Html
+        def extra_html
+          template.content_tag(:div, Formtastic::Util.html_safe(extra_html_text),:class => (options[:extra_html_class] || 'extra-html')) if extra_html?
+        end
+        
+        def extra_html?
+          extra_html_text.present? && !extra_html_text.kind_of?(Hash)
+        end
+ 
+        def extra_html_text
+          localized_string(method, options[:extra_html], :extra_html)
+        end
+        
+        def extra_html_position
+          options[:extra_html_position] ||= 1
+        end
+      end
+      
+      module Wrapping
+        def input_wrapping(&block)
+          tag_content = [template.capture(&block), error_html, hint_html]
+          tag_content.insert(extra_html_position,extra_html)
+          template.content_tag(:li, tag_content.join("\n").html_safe, wrapper_html_options)
+        end
+      end
+    end
+  end
+end
+
 # Set the default text field size when input is a string. Default is nil.
 # Formtastic::FormBuilder.default_text_field_size = 50
 
