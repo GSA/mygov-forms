@@ -7,7 +7,7 @@ class SubmissionsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf {
-        pdf = nil #@submission.to_pdf
+        pdf = @submission.to_pdf
         if pdf
           send_data pdf, :type => "application/pdf", :filename => File.basename(@submission.form.pdf.url)
         else
