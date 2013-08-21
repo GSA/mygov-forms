@@ -32,6 +32,7 @@ end
 
 group :development do
   gem 'guard-livereload'
+  gem 'quiet_assets'
   gem 'thin'
 end
 
