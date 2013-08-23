@@ -43,6 +43,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem "zeus-parallel_tests"
   gem 'pry'
+  gem 'pry-nav'
 end
 
 group :test do
