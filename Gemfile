@@ -5,18 +5,18 @@ gem 'rails', '3.2.14'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'json', "1.7.7"
-gem 'mysql2'
-gem 'jquery-rails'
-gem 'haml-rails'
-gem 'httparty'
-gem 'formtastic'
-gem 'rolify'
 gem 'cancan'
 gem "cocoon"
-gem 'capistrano'
-gem 'omniauth-myusa', :git => 'https://github.com/GSA-OCSIT/omniauth-myusa.git'
 gem 'country-select'
+gem 'formtastic'
+gem 'haml-rails'
+gem 'httparty'
+gem 'json', "~> 1.7.7"
+gem 'jquery-rails'
+gem 'mysql2'
+gem 'omniauth-myusa', :git => 'https://github.com/GSA-OCSIT/omniauth-myusa.git'
+gem 'secure_headers'
+gem 'rolify'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,6 +31,7 @@ group :assets do
 end
 
 group :development do
+  gem 'capistrano'
   gem 'guard-livereload'
   gem 'quiet_assets'
   gem 'thin'
@@ -40,20 +41,20 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem "parallel_tests"
-  gem 'rspec-rails'
-  gem "zeus-parallel_tests"
   gem 'pry'
   gem 'pry-nav'
+  gem 'rspec-rails'
+  gem "zeus-parallel_tests"
 end
 
 group :test do
   gem 'capybara'
-  gem 'launchy'
   gem 'database_cleaner'
+  gem 'launchy'
+  gem 'libnotify'
   gem 'shoulda-matchers'
   gem 'simplecov', :require => false
   gem 'webmock'
-  gem 'libnotify'
 end
 
 # To use ActiveModel has_secure_password
