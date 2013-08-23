@@ -4,7 +4,7 @@ namespace :mygov do
     desc "Import from JSON"
     task :import_from_json_file, [:json_file] => [:environment] do |t, args|
       if args.json_file.blank?
-        Rails.logger.error "usage: rake mygov:forms:import_from_json_file[json_file]"
+        puts "usage: rake mygov:forms:import_from_json_file[json_file]"
       else
         json = File.read(args.json_file)
         parsed_json = JSON.parse(json)
