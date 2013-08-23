@@ -9,7 +9,7 @@ MygovForms::Application.routes.draw do
     resources :submissions, :only => [:show, :create]
   end
   namespace :api, :defaults => {:format => :json} do
-    resources :forms, :only => [:index, :show, :create] do
+    resources :forms, :only => [:index, :show] do
       member do
         post "fill_pdf"
       end
