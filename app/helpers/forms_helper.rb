@@ -11,5 +11,9 @@ module FormsHelper
       :collection => form_field.options, 
       :required => form_field.is_required,
       :hint => form_field.description
-  end  
+  end
+  
+  def omb_info(form)
+    link_to "Form Approved OMB##{form.omb_control_number} | Expires at #{form.omb_expiration_date}", "http://www.reginfo.gov/public/do/PRAViewICR?ref_nbr=#{form.icr_reference_number}"
+  end
 end

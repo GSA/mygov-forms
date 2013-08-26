@@ -13,7 +13,7 @@ describe Form do
   it { should have_many :form_fields }
   it { should have_one :pdf }
   
-  it "should create a new object with valid attributes" do
+  it "creates a new object with valid attributes" do
     Form.create!(@valid_attributes)
   end
   
@@ -26,7 +26,7 @@ describe Form do
       @form.form_fields.create!(:field_type => "string", :name => "Field 1", :position => 1)
     end
     
-    it "should return the fields in order, with unordered fields last, sorted by id asc" do
+    it "returns the fields in order, with unordered fields last, sorted by id asc" do
       fields = @form.form_fields
       fields.first.name.should == "Field 1"
       fields[1].name.should == "Field 2"
@@ -40,8 +40,8 @@ describe Form do
       @form = Form.create!(@valid_attributes)
     end
     
-    it "should output JSON with the number and title" do
-      JSON.parse(@form.to_json).should == {"title" => 'Form Title', "number" => "F-1"}
+    it "outputs JSON with the number and title" do
+      expect(JSON.parse(@form.to_json)).to eq({"icr_reference_number"=>nil, "number"=>"F-1", "omb_control_number"=>nil, "omb_expiration_date"=>nil, "title"=>"Form Title"})
     end
   end
 end

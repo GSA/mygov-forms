@@ -1,44 +1,44 @@
 require 'spec_helper'
 
 describe "API", :type => :request do
-  before do
-    @sample_form_1 = Form.create!(:title => 'Sample Form 1', :number => 'S-1')
-    @sample_form_2 = Form.create!(:title => 'Sample Form 2', :number => 'S-2')
-    
-    @sample_form_1.form_fields.create!(:field_type => "text", :name => 'text_field', :label => 'A Text Field', :description => 'This is a text field.')
-    @sample_form_1.form_fields.create!(:field_type => "date", :name => 'date_field', :label => 'A Date Field', :description => 'This is a date field.')
-    @sample_form_1.form_fields.create!(:field_type => "select", :name => 'select_field', :label => 'A Select Field', :description => 'This is a select field', :options => [['Yes', 'Yes'], ['No', 'No']])
-  end
+  before {create_sample_forms}
 
   describe "GET /api/forms" do    
-    it "should return a JSON list of all the forms" do
+    it "returns a JSON list of all the forms" do
       get "/api/forms"
-      response.code.should == "200"
       parsed_json = JSON.parse(response.body)
-      parsed_json.first.should == {"title" => "Sample Form 1", "number" => 'S-1'}
-      parsed_json.last.should == {"title" => "Sample Form 2", "number" => 'S-2'}
+      
+      expect(response.code).to eq "200"
+      expect(parsed_json.first).to eq(JSON.parse({icr_reference_number: "201305-4040-001", number: "S-1", omb_control_number: "4040-0001", omb_expiration_date: "2016-06-30", title: "Sample Form 1"}.to_json))
+      expect(parsed_json.last).to eq(JSON.parse({icr_reference_number: nil, number: "S-2", omb_control_number: nil, omb_expiration_date: nil, title: "Sample Form 2"}.to_json))
     end
   end
   
   describe "GET /api/forms/:id" do
-    context "whent a form exists for the id supplied" do
+    context "when a form exists for the id supplied" do
       it "should return a JSON representation of the form and all its fields" do
         get "/api/forms/#{@sample_form_1.to_param}"
-        response.code.should == "200"
         parsed_json = JSON.parse(response.body)
-        parsed_json["title"].should == "Sample Form 1"
-        parsed_json["form_fields"].size.should == 3
-        parsed_json["form_fields"].first["field_type"].should == "text"
+
+        expect(response.code).to eq "200"
+        expect(parsed_json["title"]).to eq "Sample Form 1"
+        expect(parsed_json["icr_reference_number"]).to eq "201305-4040-001"
+        expect(parsed_json["number"]).to eq "S-1"
+        expect(parsed_json["omb_control_number"]).to eq "4040-0001"
+        expect(parsed_json["omb_expiration_date"]).to eq('2016-06-30')
+        expect(parsed_json["form_fields"].size).to eq 3
+        expect(parsed_json["form_fields"].first["field_type"]).to eq "text"
       end
     end
     
     context "when the id does not exist" do
       it "should return an error and a 404 status" do
         get "/api/forms/456765"
-        response.code.should == "404"
         parsed_json = JSON.parse(response.body)
-        parsed_json["status"].should == "Error"
-        parsed_json["message"].should == "Form with id=456765 not found"
+        
+        expect(response.code).to eq "404"
+        expect(parsed_json["status"]).to eq "Error"
+        expect(parsed_json["message"]).to eq "Form with id=456765 not found"
       end
     end
   end
@@ -47,19 +47,21 @@ describe "API", :type => :request do
     context "when the form id is invalid" do
       it "should return an error" do
         get "/api/forms/bad_form_id/submissions/123"
-        response.code.should == "404"
         parsed_json = JSON.parse(response.body)
-        parsed_json["status"].should == "Error"
-        parsed_json["message"].should == "Invalid form number."
+        
+        expect(response.code).to eq "404"
+        expect(parsed_json["status"]).to eq "Error"
+        expect(parsed_json["message"]).to eq "Invalid form number."
       end
     end
     
     context "when the submission id is invalid" do
       it "should return an error" do
         get "/api/forms/#{@sample_form_1.to_param}/submissions/123"
-        response.code.should == "404"
         parsed_json = JSON.parse(response.body)
-        parsed_json["status"].should == "Error"
+
+        expect(response.code).to eq "404"
+        expect(parsed_json["status"]).to eq "Error"
       end
     end
     
@@ -70,10 +72,11 @@ describe "API", :type => :request do
       
       it "should return the submission" do
         get "/api/forms/#{@sample_form_1.to_param}/submissions/#{@submission.to_param}"
-        response.code.should == "200"
         parsed_json = JSON.parse(response.body)
-        parsed_json["guid"].should == @submission.guid
-        parsed_json["data"].should == @submission.data.stringify_keys
+
+        expect(response.code).to eq "200"
+        expect(parsed_json["guid"]).to eq @submission.guid
+        expect(parsed_json["data"]).to eq @submission.data.stringify_keys
       end
     end
   end
@@ -82,22 +85,24 @@ describe "API", :type => :request do
     context "when valid form information is submitted" do
       it "should save the form as a submission" do
         post "/api/forms/#{@sample_form_1.to_param}/submissions", {:submission => {:data => {:text_field => 'Test'}}}
-        response.code.should == "201"
         parsed_json = JSON.parse(response.body)
-        parsed_json["guid"].should_not be_nil
-        parsed_json["guid"].size.should == 40
-        Submission.last.data[:text_field].should == "Test"
-        Submission.last.data[:select_field].should be_blank
+
+        expect(response.code).to eq "201"
+        expect(parsed_json["guid"]).not_to be_nil
+        expect(parsed_json["guid"].size).to eq 40
+        expect(Submission.last.data[:text_field]).to eq "Test"
+        expect(Submission.last.data[:select_field]).should be_blank
       end
     end
     
     context "when no form id is submitted" do
       it "should return an error message" do
         post "/api/forms/bad_form_id/submissions", {:submission => {:data => {:text_field => 'Test'}}}
-        response.code.should == "406"
         parsed_json = JSON.parse(response.body)
-        parsed_json["status"].should == "Error"
-        parsed_json["message"].should == "Form submission invalid: missing valid form id"
+
+        expect(response.code).to eq "406"
+        expect(parsed_json["status"]).to eq "Error"
+        expect(parsed_json["message"]).to eq "Form submission invalid: missing valid form id"
       end
     end    
   end
@@ -112,20 +117,22 @@ describe "API", :type => :request do
     context "when the number provided does not match a form" do
       it "should return an error" do
         post "/api/forms/ss-5/fill_pdf"
-        response.code.should == "404"
         parsed_json = JSON.parse(response.body)
-        parsed_json["status"].should == "Error"
-        parsed_json["message"].should == "Form with number: ss-5 not found."
+
+        expect(response.code).to eq "404"
+        expect(parsed_json["status"]).to eq "Error"
+        expect(parsed_json["message"]).to eq "Form with number: ss-5 not found."
       end
     end
     
     context "when the number matches a form, but the form does not have a PDF associated with it" do
       it "should return an error" do
         post "/api/forms/s-2/fill_pdf"
-        response.code.should == "404"
         parsed_json = JSON.parse(response.body)
-        parsed_json["status"] == "Error"
-        parsed_json["message"] == "No PDF associated with that form."
+
+        expect(response.code).to eq "404"
+        expect(parsed_json["status"]).to eq "Error"
+        expect(parsed_json["message"]).to eq "No PDF associated with that form."
       end
     end
     
@@ -137,10 +144,11 @@ describe "API", :type => :request do
       
         it "should return a filled in PDF" do
           post "/api/forms/#{@sample_form_1.to_param}/fill_pdf", {:data => {}}
-          response.code.should == "200"
-          response.body.should == "THIS IS A FAKE PDF"
-          response.content_type.should == "application/pdf"
-          response.header["Content-Disposition"].should =~ /filename=\"test\.pdf/
+
+          expect(response.code).to eq "200"
+          expect(response.body).to eq "THIS IS A FAKE PDF"
+          expect(response.content_type).to eq "application/pdf"
+          expect(response.header["Content-Disposition"]).to match /filename=\"test\.pdf/
         end
       end
       
@@ -151,10 +159,11 @@ describe "API", :type => :request do
         
         it "should return an error" do
           post "/api/forms/#{@sample_form_1.to_param}/fill_pdf", {:data => {}}
-          response.code.should == "500"
           parsed_json = JSON.parse(response.body)
-          parsed_json["status"].should == "Error"
-          parsed_json["message"].should == "Error filling PDF"
+
+          expect(response.code).to eq "500"
+          expect(parsed_json["status"]).to eq "Error"
+          expect(parsed_json["message"]).to eq "Error filling PDF"
         end
       end
     end

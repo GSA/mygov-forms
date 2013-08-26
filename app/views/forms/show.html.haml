@@ -1,5 +1,5 @@
 .row
-  .large-12.columns
+  .large-12.columns.form
     %h3
       = form_title(@form)
     %p
@@ -16,3 +16,7 @@
             = form_input(f, form_field)
         = f.actions do
           = f.action :submit, :as => :button, :label => "Submit Form"
+    - if @form.omb_control_number
+      %p#omb
+        %small.right
+          = omb_info(@form)
