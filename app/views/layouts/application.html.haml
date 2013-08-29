@@ -16,33 +16,44 @@
   %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
 
   %title= content_for?(:title) ? yield(:title) : "MyUSA Forms"
-
   = stylesheet_link_tag "application"
-  = javascript_include_tag "vendor/custom.modernizr"
+  %link{:href=>"/assets/bootstrap.css?body=>1",:media=>"screen",:rel=>"stylesheet",:type=>"text/css"}
+  %style
+    body {padding-top: 60px;}
+  %link{:href=>"/assets/bootstrap-responsive.css?body=>1",:media=>"screen",:rel=>"stylesheet",:type=>"text/css"}
+
   = csrf_meta_tag
 
 %body
-  %nav.top-bar
-    %ul.title-area
-      %li.name
-        %h1
-          = link_to "MyUSA Forms", root_path
-    %section.top-bar-section.right
-      %ul.right
-        - if user_signed_in?
-          %li.not-click
-            = link_to 'Currently logged in as:', '#'
-        %li.divider.hide-for-small
-        - if !user_signed_in?
-          %li
-            = link_to 'MyUSA Account Login', signin_path
-        - else
-          %li.not-click
-            = link_to current_user.email, '#'
-          %li.divider.hide-for-small
-          %li
-            = link_to 'Logout', signout_path
-  
+
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container
+
+        %a{'class'=>'bnt btn-navbar','data-toggle'=>'collapse','data-target'=>'.nav-collapse'}
+          %span{:class=>'icon-bar'}
+          %span{:class=>'icon-bar'}
+          %span{:class=>'icon-bar'}
+
+        .nav-collapse
+          %ul.nav
+            %li.active
+              = link_to "MyUSA Forms", root_path
+          %ul.nav.pull-right
+            - if user_signed_in?
+              %li.not-click
+                = link_to 'Currently logged in as:', '#'
+            %li.divider.hide-for-small
+            - if !user_signed_in?
+              %li
+                = link_to 'MyUSA Account Login', signin_path
+            - else
+              %li.not-click
+                = link_to current_user.email, '#'
+              %li.divider.hide-for-small
+              %li
+                = link_to 'Logout', signout_path
+
   = yield
 
   = javascript_include_tag "application"
