@@ -6,3 +6,55 @@
 div.form { padding-bottom:1.5em;
   #omb { padding: 0 1.8em; }
 }
+
+
+.formtastic {
+	.input {
+		input {
+			&[type=text],
+			&[type=tel],
+			&[type=url] {
+				padding: 0 0.6em;
+			}
+		}
+		textarea {
+			padding: 0.3em;
+			height: 6.0em;
+		}
+		.label {
+			text-align: right;
+			background: transparent;
+			color: #000;
+			padding-top: 0.4em !important;
+			padding-bottom: 0.4em;
+			white-space: normal;
+			line-height: 1.6em;
+		}
+	}
+	.choices, .fragments {
+		.label {
+			width: 100% !important;
+			label {
+				text-align: right !important;
+				width: 25% !important;
+				padding: 0.1875em 0.625em 0.25em;
+				font-size: 1.0em;
+				top: 0;
+			}
+		}
+	}
+	input[type=file],
+	select {
+		height: 2.3125em;	
+	}
+	.select, .time_zone, .country {
+		select {
+			width: 72%;
+		}
+	}
+	.input.required {
+		label, abbr {
+			color: #900;
+		}
+	}
+}

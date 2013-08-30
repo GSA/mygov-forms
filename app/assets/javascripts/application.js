@@ -16,5 +16,4 @@
 //= require_tree .
 //= require cocoon
 
-$(document).foundation();
-$(document).foundation();
+$(function(){ $(document).foundation(); });
