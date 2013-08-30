@@ -8,7 +8,7 @@ gem 'rails', '3.2.14'
 gem 'cancan'
 gem "cocoon"
 gem 'country-select'
-gem 'formtastic'
+gem 'formtastic-bootstrap'
 gem 'haml-rails'
 gem 'httparty'
 gem 'json', "~> 1.7.7"
