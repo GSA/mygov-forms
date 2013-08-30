@@ -82,6 +82,8 @@ GEM
     formatador (0.2.4)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    formtastic-bootstrap (2.1.3)
+      formtastic (~> 2.2)
     guard (1.8.2)
       formatador (>= 0.2.4)
       listen (>= 1.0.0)
@@ -272,7 +274,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   country-select
   database_cleaner
-  formtastic
+  formtastic-bootstrap
   guard
   guard-livereload
   guard-rspec
