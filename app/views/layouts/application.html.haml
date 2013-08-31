@@ -16,33 +16,23 @@
   %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
 
   %title= content_for?(:title) ? yield(:title) : "MyUSA Forms"
-
   = stylesheet_link_tag "application"
-  = javascript_include_tag "vendor/custom.modernizr"
   = csrf_meta_tag
-
 %body
-  %nav.top-bar
-    %ul.title-area
-      %li.name
-        %h1
-          = link_to "MyUSA Forms", root_path
-    %section.top-bar-section.right
-      %ul.right
+  %nav.navbar.navbar-default.navbar-inverse.navbar-fixed-top{ role: 'navigation'}
+    .navbar-header
+      %button{'class'=>'navbar-toggle',' data-toggle'=>'collapse', 'data-target'=>'.navbar-collapse', 'type'=>'button'}
+        %span{:class=>'icon-bar'}
+        %span{:class=>'icon-bar'}
+        %span{:class=>'icon-bar'}
+      = link_to "MyUSA Forms", root_path, class: 'navbar-brand'
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
-          %li.not-click
-            = link_to 'Currently logged in as:', '#'
-        %li.divider.hide-for-small
-        - if !user_signed_in?
-          %li
-            = link_to 'MyUSA Account Login', signin_path
-        - else
-          %li.not-click
-            = link_to current_user.email, '#'
-          %li.divider.hide-for-small
           %li
             = link_to 'Logout', signout_path
-  
+        - else
+          %li
+            = link_to 'MyUSA Account Login', signin_path
   = yield
-
   = javascript_include_tag "application"

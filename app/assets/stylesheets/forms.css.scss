@@ -1,14 +1,11 @@
 // Place all the styles related to the forms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body { padding-top: 60px; padding-bottom: 60px }
 
 #blank_field { display:none }
-div.form { padding-bottom:1.5em;
-  #omb { padding: 0 1.8em; }
-}
 
-
-.formtastic {
+.formtastic {  padding-bottom:1.5em;
 	.input {
 		input {
 			&[type=text],
@@ -58,3 +55,6 @@ div.form { padding-bottom:1.5em;
 		}
 	}
 }
+
+#omb { padding: 0 1.8em; text-align:right; }
+

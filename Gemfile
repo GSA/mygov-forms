@@ -8,7 +8,7 @@ gem 'rails', '3.2.14'
 gem 'cancan'
 gem "cocoon"
 gem 'country-select'
-gem 'formtastic'
+gem 'formtastic-bootstrap', git: 'https://github.com/jgrevich/formtastic-bootstrap.git', branch: 'bootstrap3'
 gem 'haml-rails'
 gem 'httparty'
 gem 'json', "~> 1.7.7"
@@ -26,8 +26,6 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
-  gem 'compass-rails'
-  gem 'zurb-foundation', '~> 4.3.0'
 end
 
 group :development do

@@ -1,37 +1,9 @@
 # encoding: utf-8
 
-# http://www.cowboycoded.com/2011/07/18/patching-formtastic-to-append-html-to-input-list-elements/
-module Formtastic
-  module Inputs
-    module Base
-      module Html
-        def extra_html
-          template.content_tag(:div, Formtastic::Util.html_safe(extra_html_text),:class => (options[:extra_html_class] || 'extra-html')) if extra_html?
-        end
+Formtastic::Helpers::FormHelper.builder = FormtasticBootstrap::FormBuilder
+
         
-        def extra_html?
-          extra_html_text.present? && !extra_html_text.kind_of?(Hash)
-        end
- 
-        def extra_html_text
-          localized_string(method, options[:extra_html], :extra_html)
-        end
         
-        def extra_html_position
-          options[:extra_html_position] ||= 1
-        end
-      end
-      
-      module Wrapping
-        def input_wrapping(&block)
-          tag_content = [template.capture(&block), error_html, hint_html]
-          tag_content.insert(extra_html_position,extra_html)
-          template.content_tag(:li, tag_content.join("\n").html_safe, wrapper_html_options)
-        end
-      end
-    end
-  end
-end
 
 # Set the default text field size when input is a string. Default is nil.
 # Formtastic::FormBuilder.default_text_field_size = 50
@@ -100,10 +72,10 @@ end
 # Formtastic::Helpers::FormHelper.builder = MyCustomBuilder
 
 # You can opt-in to Formtastic's use of the HTML5 `required` attribute on `<input>`, `<select>` 
-# and `<textarea>` tags by setting this to false (defaults to true).
-# Formtastic::FormBuilder.use_required_attribute = true
+# and `<textarea>` tags by setting this to true (defaults to false).
+# Formtastic::FormBuilder.use_required_attribute = false
 
 # You can opt-in to new HTML5 browser validations (for things like email and url inputs) by setting
-# this to false. Doing so will add a `novalidate` attribute to the `<form>` tag.
+# this to true. Doing so will add a `novalidate` attribute to the `<form>` tag.
 # See http://diveintohtml5.org/forms.html#validation for more info.
 # Formtastic::FormBuilder.perform_browser_validations = true
