@@ -91,7 +91,7 @@ describe "API", :type => :request do
         expect(parsed_json["guid"]).not_to be_nil
         expect(parsed_json["guid"].size).to eq 40
         expect(Submission.last.data[:text_field]).to eq "Test"
-        expect(Submission.last.data[:select_field]).should be_blank
+        expect(Submission.last.data[:select_field]).to be_blank
       end
     end
     

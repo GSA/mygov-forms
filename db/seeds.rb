@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+json_seeds = Dir.glob(File.join(Rails.root, 'db/json/*.json'))
+json_seeds.map {|seed| Rake::Task["mygov:forms:import_from_json_file"].execute({:json_file=> seed})}
