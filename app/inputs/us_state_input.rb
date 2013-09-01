@@ -1,4 +1,14 @@
 class UsStateInput < Formtastic::Inputs::SelectInput
+  include Formtastic::Inputs::Base
+  include FormtasticBootstrap::Inputs::Base::Labelling
+  include FormtasticBootstrap::Inputs::Base::Wrapping
+  
+  def to_html
+    bootstrap_wrapping do
+      options[:group_by] ? grouped_select_html : select_html
+    end
+  end
+  
   def collection
     [
       ['Alabama', 'AL'],
