@@ -1,11 +1,13 @@
 // Place all the styles related to the forms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body { padding-top: 60px; padding-bottom: 60px }
+
 
 #blank_field { display:none }
 
 .formtastic {  padding-bottom:1.5em;
+  button { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin:0; padding:6px 12px; }
+  
 	.input {
 		input {
 			&[type=text],
@@ -51,10 +53,10 @@ body { padding-top: 60px; padding-bottom: 60px }
 	}
 	.input.required {
 		label, abbr {
+		  border:0;
 			color: #900;
 		}
 	}
 }
 
 #omb { padding: 0 1.8em; text-align:right; }
-
