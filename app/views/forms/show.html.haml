@@ -16,6 +16,6 @@
       = f.actions do
         = f.action :submit, :as => :button, :label => "Submit Form", :button_html => { :class => 'btn btn-primary'}
   - if @form.omb_control_number
-    %p#omb
-      %small.right
+    %p.col-lg-offset-3.col-lg-9
+      %small
         = omb_info(@form)

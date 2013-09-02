@@ -2,10 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-#blank_field { display:none }
-
 .formtastic {  padding-bottom:1.5em;
+  #blank_field { display:none }
   button { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin:0; padding:6px 12px; }
   
 	.input {
@@ -29,6 +27,9 @@
 			white-space: normal;
 			line-height: 1.6em;
 		}
+	}
+	.boolean {
+	  label { padding-left:0; }
 	}
 	.choices, .fragments {
 		.label {
@@ -58,5 +59,3 @@
 		}
 	}
 }
-
-#omb { padding: 0 1.8em; text-align:right; }
