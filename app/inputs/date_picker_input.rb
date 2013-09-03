@@ -1,6 +1,7 @@
 class DatePickerInput < Formtastic::Inputs::StringInput
   include Formtastic::Inputs::Base
   include FormtasticBootstrap::Inputs::Base::Labelling
+  include FormtasticBootstrap::Inputs::Base::Placeholder
   include FormtasticBootstrap::Inputs::Base::Wrapping
 
   def to_html
@@ -17,7 +18,7 @@ class DatePickerInput < Formtastic::Inputs::StringInput
   end
    
   def input_html_options
-    super.merge(:class => "datepicker form-control", :placeholder => ActionView::Base.full_sanitizer.sanitize(label_text) || humanized_method_name.titleize)
+    super.merge(:class => "datepicker form-control", :placeholder => placeholder_text)
   end
   
 end
