@@ -38,6 +38,11 @@
         "label":"Eligible applicant type",
         "multiple":false,
         "name":"eligible_applicant_type",
+        "options": [
+          "LEA",
+          "Nonprofit with LEA",
+          "Nonprofit with consortium of schools"
+        ],
         "position":null
       },
       {
@@ -73,6 +78,9 @@
         "label":"Type of grant requested",
         "multiple":false,
         "name":"grant_request_type",
+        "options": [
+          "Development"
+        ],
         "position":null},
       {
         "description":null,
@@ -81,6 +89,11 @@
         "label":"Length of requested grant award",
         "multiple":false,
         "name":"grant_award_length",
+        "options": [
+          "3 years",
+          "4 years",
+          "5 years"
+        ],
         "position":null},
       {
         "description":null,
@@ -89,6 +102,13 @@
         "label":"Select the ONE Absolute Priority (AP) that you are addressing in your application",
         "multiple":false,
         "name":"absolute_priority",
+        "options": [
+          ["Effective Teachers and Principals", "AP1"],
+          ["Promoting STEM Education", "AP2"],
+          ["Improving Parent and Family Engagement", "AP3"],
+          ["Persistently Low-Performing Schools", "AP4"],
+          ["Achievement and Graduation Rates", "AP5"]
+        ],
         "position":null},
       {
         "description":null,
@@ -97,6 +117,13 @@
         "label":"Select up to two Competitive Preference Priorities (CPP) that you are addressing in your application",
         "multiple":true,
         "name":"competitive_preference_priorities",
+        "options": [
+          ["CPP 6: Innovations for Improving Early Learning Outcomes (zero or one point)", "CPP6"],
+          ["CPP 7: Innovations that Support College Access and Success (zero or one point)", "CPP7"],
+          ["CPP 8: Innovations to Address the Unique Learning Needs of Students with Disabilities and Limited English Proficient Students (zero or one Point)", "CPP8"],
+          ["CPP 9: Improving Productivity (zero or one point)", "CPP9"],
+          ["CPP 10: Technology (zero or one point)", "CPP10"]
+        ],
         "position":null},
       {
         "description":null,
@@ -113,6 +140,23 @@
         "label":"Student grade levels to be served by the proposed project (select all that apply):",
         "multiple":true,
         "name":"grade_levels_served",
+        "options": [
+          ["Birth-Pre K", "prek"],
+          ["Kindergarten", "K"],
+          ["First", "1"],
+          ["Second", "2"],
+          ["Third", "3"],
+          ["Fourth", "4"],
+          ["Fifth", "5"],
+          ["Sixth", "6"],
+          ["Seventh", "7"],
+          ["Eighth", "8"],
+          ["Ninth", "9"],
+          ["Tenth", "10"],
+          ["Eleventh", "11"],
+          ["Twelfth", "12"],
+          ["Post-Secondary", "postsecondary"]
+        ],
         "position":null},
       {
         "description":"In 2000 characters or less, please provide a brief description of the project you wish to propose. Be sure to include a summary of project objectives and expected outcomes, along with any special project features.",
