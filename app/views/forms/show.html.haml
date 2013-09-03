@@ -1,21 +1,48 @@
 .container
   %h3
-    = form_title(@form)
+    = @form.title
   %p
-    This page will contain information about the form, including background information on what you need to fill it, what you'll need to do, if anything, to provide additional verification, and what to do with the form once it's been filled out.
+    %strong
+      = @form.number
+
   %p
-    This page will then take the user to an HTML form page that they can fill out with their information.  Or maybe that's just part of this page. I like it all being a part of this page.
-  %p
-    So down here, we will iterate through the form fields and create input fields to fill out the form.
-  %p
-    = semantic_form_for "data", :url => form_submissions_path(@form) do |f|
-      = f.inputs do
-        = f.input :form_id, :as => :hidden, :input_html => { :value => @form.id }
-        - @form.form_fields.each do |form_field|
-          = form_input(f, form_field)
-      = f.actions do
-        = f.action :submit, :as => :button, :label => "Submit Form", :button_html => { :class => 'btn btn-primary'}
-  - if @form.omb_control_number
-    %p.col-lg-offset-3.col-lg-9
-      %small
-        = omb_info(@form)
+    Agency:
+    %br
+    Published:
+    %br
+    Form approved: , Exp. Date
+
+  %ul{:class=>"nav nav-tabs"}
+    %li{:class=>"active"}
+      %a{"data-toggle"=>"dropdown",:href=>"#"}
+        Before You Start
+    %li
+      %a{"data-toggle"=>"dropdown",:href=>"#"}
+        What You Need to Know
+    %li
+      %a{"data-toggle"=>"dropdown",:href=>"#"}
+        Other Ways to Apply
+
+
+  %ul
+  #before_you_start
+    %strong Before You Start
+    %p
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in nisi quis diam posuere venenatis eu sed ante. Integer arcu massa, pharetra eu diam et, convallis convallis sapien. Ut neque nisl, dictum nec tellus quis, gravida commodo augue. Etiam pellentesque ante varius, elementum tellus in, sodales tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In congue suscipit lectus, sed luctus sem ultricies sit amet. Nullam mollis id lacus et facilisis. In dui quam, faucibus vel dignissim vitae, vulputate et magna. Integer eu cursus lorem. Nam suscipit fringilla porta. Duis non lectus nec mi varius lobortis. Integer malesuada nisi et odio ultricies bibendum. Donec adipiscing odio sit amet euismod lobortis. Nam feugiat, lacus ut ornare semper, urna ligula laoreet dolor, ut dapibus nibh lacus nec velit.
+
+  #what_you_need
+    %strong What You Need to Know
+    %p
+      Curabitur ultricies viverra est, non placerat justo lobortis id. Vivamus sed felis sed augue volutpat laoreet a eget magna. Nulla eros sapien, elementum quis felis at, rhoncus consequat urna. Morbi ornare mollis diam vel tristique. Quisque euismod non ipsum non aliquam. Pellentesque at blandit mauris, non auctor ligula. Ut tellus nisi, hendrerit nec feugiat nec, ornare euismod orci. Fusce consequat faucibus malesuada. Ut massa mauris, sodales id lacus placerat, ornare euismod nisl. Maecenas euismod auctor metus, sit amet imperdiet elit mollis et. Morbi magna ante, posuere vel enim id, scelerisque feugiat quam. Quisque ac odio sed sem aliquam tempor. Nulla sed tellus nec lorem porttitor malesuada.
+
+  #ways_to_apply
+    %strong Other Ways to Apply
+    %p
+      Donec malesuada neque sed suscipit placerat. In molestie viverra nunc sit amet sollicitudin. Nam tempus ligula ac iaculis fermentum. Cras consectetur orci volutpat justo dictum iaculis. Aenean ac mi at arcu adipiscing convallis. Mauris eget odio odio. Nunc nunc arcu, ornare quis adipiscing eu, tempor ornare felis. Aenean aliquam, diam sed mattis interdum, ante lectus vestibulum lorem, semper fringilla risus sem quis sem. Praesent quis volutpat lorem. Nullam id aliquet turpis. Sed sodales condimentum eleifend. Integer congue justo turpis, ut tristique justo imperdiet sed. Vivamus id tellus elit. Aliquam eu arcu in ipsum varius rhoncus.
+
+    %p
+      =link_to "Download the PDF (185k)", "#"
+      .btn-group
+        %a{:class=>"btn btn-primary"}
+          Take me to the form
+

@@ -8,6 +8,9 @@ MygovForms::Application.routes.draw do
   resources :forms, :only => [:index, :show] do
     resources :submissions, :only => [:show, :create]
   end
+
+  get 'forms/:id/submission', to: 'forms#submission'
+
   namespace :api, :defaults => {:format => :json} do
     resources :forms, :only => [:index, :show] do
       member do
