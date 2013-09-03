@@ -14,7 +14,10 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-datepicker
+//= require bootstrap-tabs
 //= require cocoon
 //= require_tree .
 
 $('.datepicker').datepicker();
+
+$('.tab').tabs();
