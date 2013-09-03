@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/jgrevich/formtastic-bootstrap.git
-  revision: da184690a96620eb28064059c9f6eecd5bb0c0b1
+  revision: 5893503df05ada77f4cdd67ed778b52f946b96b5
   branch: bootstrap3
   specs:
     formtastic-bootstrap (2.1.3)
