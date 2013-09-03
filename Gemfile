@@ -36,6 +36,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'guard'
   gem 'guard-rspec'
   gem "parallel_tests"
