@@ -13,11 +13,13 @@ body { margin:60px 0; }
 			&[type=tel],
 			&[type=url] {
 				padding: 0 0.6em;
+				width:100%;
 			}
 		}
 		textarea {
 			padding: 0.3em;
 			height: 6.0em;
+			width:100%;
 		}
 		.label {
 			text-align: right;
@@ -50,7 +52,7 @@ body { margin:60px 0; }
 	}
 	.select, .time_zone, .country {
 		select {
-			width: 72%;
+			width: 100%;
 		}
 	}
 	.input.required {
