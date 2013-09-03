@@ -41,6 +41,7 @@ group :development, :test do
   gem "parallel_tests"
   gem 'pry'
   gem 'pry-nav'
+  gem 'pry-rescue'
   gem 'rspec-rails'
   gem "zeus-parallel_tests"
 end

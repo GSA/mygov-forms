@@ -117,6 +117,7 @@ GEM
       multi_xml (>= 0.5.2)
     httpauth (0.2.0)
     i18n (0.6.5)
+    interception (0.3)
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -174,6 +175,9 @@ GEM
       slop (~> 3.4)
     pry-nav (0.2.3)
       pry (~> 0.9.10)
+    pry-rescue (1.1.1)
+      interception (>= 0.3)
+      pry
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
@@ -292,6 +296,7 @@ DEPENDENCIES
   parallel_tests
   pry
   pry-nav
+  pry-rescue
   quiet_assets
   rails (= 3.2.14)
   rolify
