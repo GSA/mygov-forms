@@ -9,6 +9,21 @@ class UsStateInput < Formtastic::Inputs::SelectInput
     end
   end
   
+  def wrapper_html_options
+    super.tap do |options|
+      options[:class] << " select"
+      options[:class] << " has-error" if errors?
+    end
+  end
+  
+  def input_html_options
+    result = {}
+    result[:class] = 'form-control'
+    result[:validate] = options[:validate] if options[:validate]
+
+    result.merge(super)
+  end
+  
   def collection
     [
       ['Alabama', 'AL'],
@@ -65,4 +80,6 @@ class UsStateInput < Formtastic::Inputs::SelectInput
       ['Wyoming', 'WY']
     ]
   end
+    
+
 end
