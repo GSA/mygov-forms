@@ -1,10 +1,9 @@
-.row
-  .large-12.columns
-    %h3
-      All Forms
-    %p
-      Select a form
-    %ul
-      - @forms.each do |form|
-        %li
-          = link_to form_title(form), form_path(form)
+.container
+  %h1
+    All Forms
+  %p.lead
+    Select a form
+  %ul
+    - @forms.each do |form|
+      %li
+        = link_to form_title(form), form_path(form)

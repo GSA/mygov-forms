@@ -2,24 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#blank_field { display:none }
-div.form { padding-bottom:1.5em;
-  #omb { padding: 0 1.8em; }
-}
-
-
-.formtastic {
+body { margin:60px 0; }
+.formtastic {  padding-bottom:1.5em;
+  #blank_field { display:none }
+  button { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin:0; padding:6px 12px; }
+  legend { display:none;}
 	.input {
 		input {
 			&[type=text],
 			&[type=tel],
 			&[type=url] {
 				padding: 0 0.6em;
+				width:100%;
 			}
 		}
 		textarea {
 			padding: 0.3em;
 			height: 6.0em;
+			width:100%;
 		}
 		.label {
 			text-align: right;
@@ -30,6 +30,9 @@ div.form { padding-bottom:1.5em;
 			white-space: normal;
 			line-height: 1.6em;
 		}
+	}
+	.boolean {
+	  label { padding-left:0; }
 	}
 	.choices, .fragments {
 		.label {
@@ -49,11 +52,12 @@ div.form { padding-bottom:1.5em;
 	}
 	.select, .time_zone, .country {
 		select {
-			width: 72%;
+			width: 100%;
 		}
 	}
 	.input.required {
 		label, abbr {
+		  border:0;
 			color: #900;
 		}
 	}

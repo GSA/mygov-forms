@@ -14,7 +14,7 @@ class FormField < ActiveRecord::Base
   def formtastic_field_type
     case self.field_type
     when "date"
-      "date_select"
+      "date_picker"
     when "time"
       "time_select"
     when "datetime"
