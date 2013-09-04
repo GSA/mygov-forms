@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130823215414) do
+ActiveRecord::Schema.define(:version => 20130904135534) do
 
   create_table "agencies", :force => true do |t|
     t.string   "name"
@@ -40,11 +40,14 @@ ActiveRecord::Schema.define(:version => 20130823215414) do
   create_table "forms", :force => true do |t|
     t.string   "title"
     t.string   "number"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.string   "icr_reference_number"
     t.string   "omb_control_number"
     t.date     "omb_expiration_date"
+    t.text     "start_content"
+    t.text     "need_to_know_content"
+    t.text     "ways_to_apply_content"
   end
 
   create_table "pdf_fields", :force => true do |t|
