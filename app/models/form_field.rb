@@ -7,7 +7,7 @@ class FormField < ActiveRecord::Base
   
   def as_json(options = {})
     super_options = options.merge(:only => [:name, :field_type, :label, :description, :is_required, :multiple, :position])
-    super_options.merge!(:options => self.options.each{|k,v| {k: v}}) if self.options.present?
+    super_options[:only] << :options if self.options
     super(super_options)
   end
   

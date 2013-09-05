@@ -16,19 +16,34 @@ describe "API", :type => :request do
   
   describe "GET /api/forms/:id" do
     context "when a form exists for the id supplied" do
-      it "should return a JSON representation of the form and all its fields" do
-        get "/api/forms/#{@sample_form_1.to_param}"
-        parsed_json = JSON.parse(response.body)
+      context "when a form contains a form_field of type select" do
+        it "should return a JSON representation of the form and all its fields" do
+          get "/api/forms/#{@sample_form_1.to_param}"
+          parsed_json = JSON.parse(response.body)
 
-        expect(response.code).to eq "200"
-        expect(parsed_json["title"]).to eq "Sample Form 1"
-        expect(parsed_json["icr_reference_number"]).to eq "201305-4040-001"
-        expect(parsed_json["number"]).to eq "S-1"
-        expect(parsed_json["omb_control_number"]).to eq "4040-0001"
-        expect(parsed_json["omb_expiration_date"]).to eq('2016-06-30')
-        expect(parsed_json["form_fields"].size).to eq 3
-        expect(parsed_json["form_fields"].first["field_type"]).to eq "text"
+          expect(response.code).to eq "200"
+          expect(parsed_json["title"]).to eq "Sample Form 1"
+          expect(parsed_json["icr_reference_number"]).to eq "201305-4040-001"
+          expect(parsed_json["number"]).to eq "S-1"
+          expect(parsed_json["omb_control_number"]).to eq "4040-0001"
+          expect(parsed_json["omb_expiration_date"]).to eq('2016-06-30')
+          expect(parsed_json["form_fields"].size).to eq 3
+          expect(parsed_json["form_fields"].first["field_type"]).to eq "text"
+          expect(parsed_json['form_fields'].last["options"]).to eq [["Yes", "Yes"], ["No", "No"]]
+        end
       end
+      
+      context "when a form does not contain a form_field of type select" do
+        it "does not contain an array of options in the JSON representation of the form" do
+          get "/api/forms/#{@sample_form_2.to_param}"
+          parsed_json = JSON.parse(response.body)
+          @options_hash = false
+          parsed_json["form_fields"].map {|form_field| @options_hash = true if form_field.has_key?("options") }
+
+          expect(@options_hash).to be false
+        end
+      end
+      
     end
     
     context "when the id does not exist" do
