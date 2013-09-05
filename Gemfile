@@ -37,13 +37,16 @@ end
 
 group :development, :test do
   gem 'awesome_print'
+  gem 'capybara-accessible', :github => 'jgrevich/capybara-accessible', :branch => 'WIP-granulated_aria_tests'
   gem 'guard'
   gem 'guard-rspec'
   gem "parallel_tests"
   gem 'pry'
   gem 'pry-nav'
-  gem 'pry-rescue'
+#  gem 'pry-rescue'
+#  gem 'pry-stack_explorer'
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
   gem "zeus-parallel_tests"
 end
 
@@ -53,7 +56,7 @@ group :test do
   gem 'launchy'
   gem 'libnotify'
   gem 'shoulda-matchers'
-  gem 'simplecov', :require => false
+#  gem 'simplecov', :require => false
   gem 'webmock'
 end
 

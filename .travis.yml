@@ -25,7 +25,7 @@ notifications:
 script: 
   - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare
-  - bundle exec rake spec
+  - NO_ACC=true bundle exec rake spec
 services: mysql
 rvm:
   - 2.0.0

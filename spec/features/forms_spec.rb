@@ -1,39 +1,48 @@
 require 'spec_helper'
 
 describe "Forms" do
-  describe "GET /" do
-      it "should show the home page" do
+  before(:each) do
+    Capybara.default_driver = :rack_test
+    Capybara.javascript_driver = :rack_test
+  end
+  
+  it "sets secure headers (X-Frame-Options & X-XSS-Protection)" do
+    # NOTE: the app also sets X-Content-Type-Options: nosniff, but that is only set for IE browsers
+    visit root_path
+    expect(page.response_headers["X-Frame-Options"]).to eq "SAMEORIGIN"
+    expect(page.response_headers["X-XSS-Protection"]).to eq "1; mode=block"
+  end
+  
+  describe "GET /" do    
+      it "displays the home page" do
         visit root_path
-        page.should have_content "All Forms"
+        expect(page).to have_content "All Forms"
       end
-      
-      it "sets secure headers (X-Frame-Options & X-XSS-Protection)" do
-        # NOTE: the app also sets X-Content-Type-Options: nosniff, but that is only set for IE browsers
-        visit root_url
-
-        expect(page.response_headers["X-Frame-Options"]).to eq "SAMEORIGIN"
-        expect(page.response_headers["X-XSS-Protection"]).to eq "1; mode=block"
+            
+      it "provides a link to log in" do
+        visit root_path
+        expect(page).to have_content("Login")
       end
     
     context "when there are forms in the database" do
       before {create_sample_forms}
-      
-      it "should list the forms on the home page and link to those forms by title and number" do
+
+      it "lists the forms on the home page and links to those forms by title and number" do
         visit root_path
-        page.should have_link 'Sample Form 1 (S-1)'
-        page.should have_link 'Sample Form 2 (S-2)'
+        expect(page).to have_link 'Sample Form 1 (S-1)'
+        expect(page).to have_link 'Sample Form 2 (S-2)'
       end
       
-      it "should let a user navigate to a form and fill it out" do
+      it "allows the user to navigate to a form and fill it out" do
         visit root_path
         click_link 'Sample Form 1 (S-1)'
-        page.should have_content "A Text Field"
-        page.should have_content "A Date Field"
-        page.should have_content "A Select Field"
+        expect(page).to have_content "A Text Field"
+        expect(page).to have_content "A Date Field"
+        expect(page).to have_content "A Select Field"
         fill_in 'data_text_field', with: 'America'
         click_button "Submit"
-        page.should have_content "Your form has been submitted"
-        page.should have_no_button "Download as PDF"
+        expect(page).to have_content "Your form has been submitted"
+        expect(page).to have_no_button "Download as PDF"
         Submission.last.data[:text_field].should == "America"
         Submission.last.data[:select_field].should be_blank
       end
@@ -52,7 +61,7 @@ describe "Forms" do
           click_link 'Sample Form 1 (S-1)'
           omb_link = find_link('Form Approved')
 
-          expect(omb_link[:href]).to have_content form.icr_reference_number
+          expect(omb_link[:href].include?(form.icr_reference_number)).to be true
         end
         
       end
@@ -75,7 +84,7 @@ describe "Forms" do
           pdf_field.save!
         end
         
-        it "should allow the user to download a PDF version of their form if available" do
+        it "allows the user to download a PDF version of their form" do
           visit root_path
           click_link 'Sample Form 1 (S-1)'
           fill_in 'A Text Field', with: 'America'
