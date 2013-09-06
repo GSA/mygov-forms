@@ -1,4 +1,4 @@
-.container{role: 'main'}
+.container
   %h1
     = form_title(@form)
   %p.lead
@@ -16,4 +16,4 @@
       = f.actions do
         = f.action :submit, :as => :button, :label => "Submit Form", :button_html => { :class => 'btn btn-primary' }
   - if @form.omb_control_number
-    %p.col-lg-offset-3.col-lg-9 #{omb_info(@form)}
+    - content_for :omb_info, omb_info(@form)

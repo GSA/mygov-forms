@@ -33,5 +33,19 @@
         - else
           %li
             = link_to 'MyUSA Account Login', signin_path, role: 'menuitem'
-  = yield
+  %main{role: 'main'}
+    = yield
+  %footer.container{role: 'contentinfo'}
+    .row
+      .col-lg-3
+        %p
+          = link_to image_tag('logo.png', alt:'MyUSA logo'), 'https://my.usa.gov', title:'MyUSA Homepage'
+          %small
+            A project by the
+            = link_to 'MyUSA', 'https://my.usa.gov', title:'MyUSA Homepage'
+            Team
+      .col-lg-9
+        %p.omb_info
+          %small
+            = content_for :omb_info
   = javascript_include_tag "application"

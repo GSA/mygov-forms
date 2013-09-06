@@ -2,63 +2,71 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body { margin:60px 0; }
-.formtastic {  padding-bottom:1.5em;
-  #blank_field { display:none }
-  button { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin:0; padding:6px 12px; }
-  legend { display:none;}
-	.input {
-		input {
-			&[type=text],
-			&[type=tel],
-			&[type=url] {
-				padding: 0 0.6em;
-				width:100%;
-			}
-		}
-		textarea {
-			padding: 0.3em;
-			height: 6.0em;
-			width:100%;
-		}
-		.label {
-			text-align: right;
-			background: transparent;
-			color: #000;
-			padding-top: 0.4em !important;
-			padding-bottom: 0.4em;
-			white-space: normal;
-			line-height: 1.6em;
-		}
-	}
-	.boolean {
-	  label { padding-left:0; }
-	}
-	.choices, .fragments {
-		.label {
-			width: 100% !important;
-			label {
-				text-align: right !important;
-				width: 25% !important;
-				padding: 0.1875em 0.625em 0.25em;
-				font-size: 1.0em;
-				top: 0;
-			}
-		}
-	}
-	input[type=file],
-	select {
-		height: 2.3125em;	
-	}
-	.select, .time_zone, .country {
-		select {
-			width: 100%;
-		}
-	}
-	.input.required {
-		label, abbr {
-		  border:0;
-			color: #900;
-		}
-	}
+body { margin-top:60px;
+  .formtastic {  padding-bottom:1.5em;
+    #blank_field { display:none }
+    button { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin:0; padding:6px 12px; }
+    legend { display:none;}
+  	.input {
+  		input {
+  			&[type=text],
+  			&[type=tel],
+  			&[type=url] {
+  				padding: 0 0.6em;
+  				width:100%;
+  			}
+  		}
+  		textarea {
+  			padding: 0.3em;
+  			height: 6.0em;
+  			width:100%;
+  		}
+  		.label {
+  			text-align: right;
+  			background: transparent;
+  			color: #000;
+  			padding-top: 0.4em !important;
+  			padding-bottom: 0.4em;
+  			white-space: normal;
+  			line-height: 1.6em;
+  		}
+  	}
+  	.boolean {
+  	  label { padding-left:0; }
+  	}
+  	.choices, .fragments {
+  		.label {
+  			width: 100% !important;
+  			label {
+  				text-align: right !important;
+  				width: 25% !important;
+  				padding: 0.1875em 0.625em 0.25em;
+  				font-size: 1.0em;
+  				top: 0;
+  			}
+  		}
+  	}
+  	input[type=file],
+  	select {
+  		height: 2.3125em;	
+  	}
+  	.select, .time_zone, .country {
+  		select {
+  			width: 100%;
+  		}
+  	}
+  	.input.required {
+  		label, abbr {
+  		  border:0;
+  			color: #900;
+  		}
+  	}
+  }
+
+  footer { margin:3em 0 1em;
+    p {
+      img { padding-right:6px; width:86px; }
+    }
+    p.omb_info { height:32px; padding-top:8px; }
+  }
 }
