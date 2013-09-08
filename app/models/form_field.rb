@@ -15,6 +15,8 @@ class FormField < ActiveRecord::Base
     case self.field_type
     when "date"
       "date_picker"
+    when "date_select"
+      "date_picker"
     when "time"
       "time_select"
     when "datetime"
