@@ -17,6 +17,7 @@ gem 'mysql2'
 gem 'omniauth-myusa', :git => 'https://github.com/GSA-OCSIT/omniauth-myusa.git'
 gem 'secure_headers'
 gem 'rolify'
+gem 'redcarpet'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -48,6 +49,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem "zeus-parallel_tests"
+  gem 'factory_girl_rails'
 end
 
 group :test do

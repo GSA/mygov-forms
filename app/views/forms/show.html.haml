@@ -1,19 +1,55 @@
 .container
   %h1
-    = form_title(@form)
-  %p.lead
-    This page will contain information about the form, including background information on what you need to fill it, what you'll need to do, if anything, to provide additional verification, and what to do with the form once it's been filled out.
-  %p.lead
-    This page will then take the user to an HTML form page that they can fill out with their information.  Or maybe that's just part of this page. I like it all being a part of this page.
-  %p.lead
-    So down here, we will iterate through the form fields and create input fields to fill out the form.
+    = @form.title
+
+  %h4
+    = "Form #{@form.number}"
+
   %p
-    = semantic_form_for "data", :url => form_submissions_path(@form) do |f|
-      = f.inputs do
-        = f.input :form_id, :as => :hidden, :input_html => { :value => @form.id }
-        - @form.form_fields.each do |form_field|
-          = form_input(f, form_field)
-      = f.actions do
-        = f.action :submit, :as => :button, :label => "Submit Form", :button_html => { :class => 'btn btn-primary' }
-  - if @form.omb_control_number
-    - content_for :omb_info, omb_info(@form)
+    Description goes here
+
+  %p
+    %strong Agency:
+    = @form.agency_name
+    %br
+    %strong Published:
+    = @form.published_at.strftime("%a %-d %B %Y")
+    %br
+    %strong
+      Form approved:
+    (pull this from reginfo)
+    - if @form.omb_expiration_date
+      %br
+      %strong Exp. Date:
+      = @form.omb_expiration_date.strftime("%a %-d %B %Y")
+
+  %p
+    .btn-group
+      %a{:class=>"btn btn-primary btn-lg", :href=>"#{@form.number}/start"}
+        Take me to the form
+  %p
+
+  #form-info.tab-content
+    %ul{'class'=>'nav nav-tabs', 'data-tabs'=>'tabs'}
+      - @navigation_items.each_with_index do |(key,val),index|
+        - if @form.send(key)
+          %li{:class=> (index == 0 ? "active" : nil)}
+            %a{"data-toggle"=>"tab","href"=>"##{val[:link]}"}
+              = val[:title]
+
+
+    - @navigation_items.each_with_index do |(key,val),index|
+      - if @form.send(key)
+        .tab-pane{:class=>"#{val[:link]} #{'active' if index == 0}", :id=> val[:link]}
+          %h3
+            = val[:title]
+          %p
+            = raw @markdown.render(@form.send(key))
+
+
+  #pra
+    %p
+      %strong Paperwork Reduction Act
+      %br
+      This information collection meets the requirements of 44 U.S.C. § 3507, as amended by Section 2 of the Paperwork Reduction Act of 1995. You do not need to answer these questions unless we display a valid Office of Management and Budget control number. We estimate that it will take about 20 minutes to read the instructions, gather the facts, and answer the questions. (time burdern hours * 60 / responses)
+

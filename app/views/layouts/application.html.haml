@@ -18,9 +18,9 @@
   = stylesheet_link_tag "application"
   = csrf_meta_tag
 %body
-  %nav.navbar.navbar-default.navbar-inverse.navbar-fixed-top{role: 'navigation'}
+  %nav.navbar.navbar-default.navbar.navbar-fixed-top{ role: 'navigation'}
     .navbar-header{role:'banner'}
-      %button{'class'=>'navbar-toggle',' data-toggle'=>'collapse', 'data-target'=>'.navbar-collapse', 'title'=>'navbar-toggle','type'=>'button'}
+      %button{'class'=>'navbar-toggle',' data-toggle'=>'collapse', 'data-target'=>'.navbar-collapse', 'type'=>'button', 'title'=>'navbar-toggle'}
         %span{:class=>'icon-bar'}
         %span{:class=>'icon-bar'}
         %span{:class=>'icon-bar'}
@@ -32,20 +32,8 @@
             = link_to 'Logout', signout_path, role: 'menuitem'
         - else
           %li
-            = link_to 'MyUSA Account Login', signin_path, role: 'menuitem'
-  %main{role: 'main'}
-    = yield
-  %footer.container{role: 'contentinfo'}
-    .row
-      .col-lg-3
-        %p
-          = link_to image_tag('logo.png', alt:'MyUSA logo'), 'https://my.usa.gov', title:'MyUSA Homepage'
-          %small
-            A project by the
-            = link_to 'MyUSA', 'https://my.usa.gov', title:'MyUSA Homepage'
-            Team
-      .col-lg-9
-        %p.omb_info
-          %small
-            = content_for :omb_info
+            = link_to image_tag('shield.png') + raw('<span>Log In</span><strong></strong>'), signin_path, id: 'log_in_link', :class => 'right'
+
+
+  = yield
   = javascript_include_tag "application"

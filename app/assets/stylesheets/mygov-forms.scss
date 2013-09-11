@@ -1,0 +1,61 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#form-info {
+  margin-top: 30px;
+}
+
+.btn-primary {
+  background-color: #369;
+  border-color: #264c73;
+}
+
+.navbar { border-color:#921B1E; border-width: 6px 0 0 0; margin:0; min-height: 20px;}
+
+.navbar-brand { padding: 12px 12px; }
+
+.navbar-nav li a { line-height: 15px}
+
+#pra {
+  color: #777;
+  font-size: 90%;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  margin-top: 40px;
+  padding: 10px;
+}
+
+.tab-pane {
+  padding: 0 15px;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911);
+
+h1 { font-family: 'Goudy Bookletter 1911', serif; font-weight: normal;
+  a { color:#122237; }
+}
+
+#log_in_link { background-color:#112136; border-right: 6px solid #1d6484; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
+  img { height:52px; position:absolute; left:-19px; top:-6px; }
+  span { font-weight: normal; }
+}
+#log_in_link:hover { background-color:#1d6484; border-right:6px solid #112136; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
+  img { height:52px; position:absolute; left:-19px; top:-6px; }
+  span { font-weight: normal; }
+}
+
+#log_in_link span:after { content: ' with ';}
+#log_in_link strong:after { content: 'MyUSA';}
+
+@media only screen and (max-width: 940px) {
+  .top-bar-section li a:not(.button) {
+    background:none;
+    background-color: #e6e6e6;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #log_in_link span:after { content: none;}
+  #log_in_link strong:after { content: none;}
+}
