@@ -50,6 +50,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem "zeus-parallel_tests"
   gem 'factory_girl_rails'
+  gem "brakeman", :require => false
 end
 
 group :test do
