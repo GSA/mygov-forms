@@ -6,7 +6,8 @@ describe Form do
       :title => 'Form Title',
       :number => 'F-1',
       :start_content => 'Before you begin filling out the form, make sure that you have the following materials...',
-      :agency_name => 'Test Government Agency'
+      :agency_name => 'Test Government Agency',
+      :published_at => Time.now
     }
   end
 
@@ -15,9 +16,34 @@ describe Form do
   it { should have_many :form_fields }
   it { should have_one :pdf }
 
-  it "creates a new object with valid attributes" do
-    Form.create!(@valid_attributes)
+
+  context "Valid form objects" do
+    it "creates a valid object with valid attributes" do
+      Form.create!(@valid_attributes).should be_valid
+    end
+
+    it "saves a default value for published_at when it has not been set" do
+      @valid_attributes.delete(:published_at)
+      new_form = Form.new(@valid_attributes)
+
+      new_form.save
+      expect(new_form.published_at).to_not be_nil
+    end
   end
+
+
+  context "Invalid form objects" do
+    [:number, :title, :start_content, :agency_name].each do |attr|
+      it "should not be valid with a missing '#{attr}'' attribute" do
+        form = Form.new(@valid_attributes)
+        form.send("#{attr.to_s}=", nil)
+        form.should_not be_valid
+      end
+    end
+  end
+
+
+
 
   context "when the form has form fields, so with field orders, some without" do
     before do
