@@ -1,0 +1,467 @@
+{
+  "pdf": {
+    "url": "http://www.socialsecurity.gov/online/ss-5.pdf",
+    "pdf_fields": [
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].firstname[0]",
+            "FieldNameAlt": "First Name to be shown on card",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].Middlename[0]",
+            "FieldNameAlt": "Middle Name to be shown on card",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].LastName[0]",
+            "FieldNameAlt": "Last name to be shown on card",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].firstdiffname[0]",
+            "FieldNameAlt": "First Name at birth (if different than above)",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].Middlediffname[0]",
+            "FieldNameAlt": "Middle Name at birth (if different than above)",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].Lastdiffname[0]",
+            "FieldNameAlt": "Last Name at birth (if different than above)",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].Othername[0]",
+            "FieldNameAlt": "Other names used on your SSN Card",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].oldssnXXX[0]",
+            "FieldNameAlt": "First three digits of SSN previously assigned to person listed in item 1",
+            "FieldFlags": "25165824",
+            "FieldJustification": "Left",
+            "FieldMaxLength": "3"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].oldssnXX[0]",
+            "FieldNameAlt": "Second two digits of SSN previously assigned to person listed in item 1",
+            "FieldFlags": "25165824",
+            "FieldJustification": "Left",
+            "FieldMaxLength": "2"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].oldssnXXXX[0]",
+            "FieldNameAlt": "Last four digits of SSN previously assigned to person listed in item 1",
+            "FieldFlags": "25165824",
+            "FieldJustification": "Left",
+            "FieldMaxLength": "4"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].cityofbirth[0]",
+            "FieldNameAlt": "City of Birth(Do Not Abbreviate)",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].stateatbirth[0]",
+            "FieldNameAlt": "State or Foreign Country at Birth (Do Not Abbreviate)",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].DateTimeField1[0]",
+            "FieldNameAlt": "Date of Birth (MM/DD/ Y Y Y Y )",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].citizenship[0]",
+            "FieldNameAlt": "Check if US Citizen",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "us citizen"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].citizenship[1]",
+            "FieldNameAlt": "Check if legal alien allowed to work",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "legal alien allowed to work"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].citizenship[2]",
+            "FieldNameAlt": "Check if Legal Alien Not Allowed To Work(See Instructions On Page 3)",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "legal alien not allowed to work"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].citizenship[3]",
+            "FieldNameAlt": "Check if Other (See Instructions On Page 3)",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Other"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].hispanicorlatino[0]",
+            "FieldNameAlt": "Are You Hispanic or Latino? (Your Response is Voluntary) Yes",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "yes"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].hispanicorlatino[1]",
+            "FieldNameAlt": "Check if no",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Off"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].hawaiian[0]",
+            "FieldNameAlt": "Race - Check if Native Hawaiian",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Off"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].alaskanative[0]",
+            "FieldNameAlt": "Check if Alaska Native",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Off"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].asian[0]",
+            "FieldNameAlt": "Check if Asian",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Off"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].americanindian[0]",
+            "FieldNameAlt": "Check if American Indian",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Off"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].blackafricanamerican[0]",
+            "FieldNameAlt": "Check if Black/African American",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Off"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].otherpacificislander[0]",
+            "FieldNameAlt": "Check if other pacific islander",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Off"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].white[0]",
+            "FieldNameAlt": "Check if White",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Off"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].Gender[0]",
+            "FieldNameAlt": "Gender - Male",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "male"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].Gender[1]",
+            "FieldNameAlt": "Gender - Female",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Off"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].mothersfirstname[0]",
+            "FieldNameAlt": "Mother's First Name at her Birth",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].mothersmiddlename[0]",
+            "FieldNameAlt": "Mother's middle name at her birth",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].motherslastname[0]",
+            "FieldNameAlt": "Mother's last name at her birth",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].TextField15[0]",
+            "FieldNameAlt": "First three digits of Mother's Social Security Number (See instructions for 9 B on Page 3)",
+            "FieldFlags": "25165824",
+            "FieldJustification": "Left",
+            "FieldMaxLength": "3"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].TextField16[0]",
+            "FieldNameAlt": "Second 2 digits of Mother's Social Security Number",
+            "FieldFlags": "25165824",
+            "FieldJustification": "Left",
+            "FieldMaxLength": "2"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].TextField17[0]",
+            "FieldNameAlt": "Last 4 digits of Mother's Social Security Number ",
+            "FieldFlags": "25165824",
+            "FieldJustification": "Left",
+            "FieldMaxLength": "4"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].motherunknown[0]",
+            "FieldNameAlt": "Check if Mother's social security number is unknown",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Off"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].fathersfirstname[0]",
+            "FieldNameAlt": "Father's First Name",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].fathersmiddlename[0]",
+            "FieldNameAlt": "Father's middle name",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].fatherslastname[0]",
+            "FieldNameAlt": "Father's last name",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].TextField18[0]",
+            "FieldNameAlt": "First three digits of Father's Social Security Number (See instructions for 10 B on Page 3)",
+            "FieldFlags": "25165824",
+            "FieldJustification": "Left",
+            "FieldMaxLength": "3"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].TextField110[0]",
+            "FieldNameAlt": "Second 2 digits of Father's Social Security Number ",
+            "FieldFlags": "25165824",
+            "FieldJustification": "Left",
+            "FieldMaxLength": "2"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].TextField19[0]",
+            "FieldNameAlt": "Last 4 digits of Father's Social Security Number",
+            "FieldFlags": "25165824",
+            "FieldJustification": "Left",
+            "FieldMaxLength": "4"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].fatherunknown[0]",
+            "FieldNameAlt": "Check if Father's social security number is unknown",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Off"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].ssnbefore[0]",
+            "FieldNameAlt": "Has the person listed in item 1 or anyone acting on his/her behalf ever filed for or received a Social Security number card before? Yes (If \"yes\" answer questions 12-13)",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "yes"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].ssnbefore[1]",
+            "FieldNameAlt": "Check if No",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "no"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].ssnbefore[2]",
+            "FieldNameAlt": "check if Don't Know (If \"don't know,\" skip to question 14.)",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "don't know"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].firstnameonrecentcard[0]",
+            "FieldNameAlt": "Enter the first name shown on the most recent Social Security card issued for the person listed in item 1",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].middlenameonrecentcard[0]",
+            "FieldNameAlt": "Enter full middle name on most recent card for person listed in item 1",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].lastnameonrecentcard[0]",
+            "FieldNameAlt": "Enter last name on most recent card for person listed in item 1",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].DateTimeField2[0]",
+            "FieldNameAlt": "Enter any different date of birth if used on an earlier application for a card MM/DD/ Y Y Y Y",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].DateTimeField2[1]",
+            "FieldNameAlt": "Today's Date MM/DD/ Y Y Y Y",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].areacode[0]",
+            "FieldNameAlt": "Daytime Phone Number Area Code ",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].phonenumber[0]",
+            "FieldNameAlt": "Daytime Phone Number",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].streetaddress[0]",
+            "FieldNameAlt": "Mailing Address - Street Address, Apartment Number, PO Box, Rural Route Number",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].mailingcity[0]",
+            "FieldNameAlt": "Mailing Address - City, Do not abbreviate",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].state[0]",
+            "FieldNameAlt": "Mailing Address - State/Foreign Country do not abbreviate",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].zipcode[0]",
+            "FieldNameAlt": "Mailing Address -  Zip Code",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].relationship[0]",
+            "FieldNameAlt": "Check if Your Relationship to the person in item 1 is",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "self"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].relationship[1]",
+            "FieldNameAlt": "check if Your Relationship to the person in item 1 is",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Off"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].relationship[2]",
+            "FieldNameAlt": "check if Your Relationship to the person in item 1 is",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "legal guardian"
+        },
+        {
+            "FieldType": "Button",
+            "FieldName": "topmostSubform[0].Page5[0].relationship[3]",
+            "FieldNameAlt": "check if Your Relationship to the person in item 1 is",
+            "FieldFlags": "0",
+            "FieldJustification": "Left",
+            "FieldStateOption": "Other"
+        },
+        {
+            "FieldType": "Text",
+            "FieldName": "topmostSubform[0].Page5[0].TextField14[0]",
+            "FieldNameAlt": "If you selected other for your relationship to the person in Item 1, please specify your relationship",
+            "FieldFlags": "8388608",
+            "FieldJustification": "Left"
+        }
+    ]
+  }
+}

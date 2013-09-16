@@ -19,5 +19,4 @@
 //= require_tree .
 
 $('.datepicker').datepicker();
-
 $('.tab').tabs();

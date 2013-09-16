@@ -12,7 +12,7 @@ describe FormField do
   it { should validate_presence_of :field_type }
   it { should validate_presence_of :name }
   it { should belong_to :form }
-  it { should have_one :pdf_field }
+  it { should have_many :pdf_fields }
 
   it "should create a new instance given valid attributes" do
     form_field = FormField.new(@valid_attributes)

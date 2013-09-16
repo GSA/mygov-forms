@@ -1,6 +1,6 @@
 class Pdf < ActiveRecord::Base
   belongs_to :form
-  has_many :pdf_fields
+  has_many :pdf_fields, :dependent => :destroy
   validates_presence_of :url
   attr_accessible :url
   URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
@@ -16,14 +16,34 @@ class Pdf < ActiveRecord::Base
     end.flatten.sort.join('&')
   }
   
+  def self.import_from_json(file)
+    return unless File.exist?(file)
+    puts " importing #{file}."
+    parsed_pdf_json = JSON.parse(File.read(file))
+
+    pdf = Pdf.create(url: parsed_pdf_json["pdf"]["url"])
+    
+    pdf.pdf_fields.destroy_all
+    
+    parsed_pdf_json["pdf"]["pdf_fields"].each_with_index do |pdf_field, index|
+      mappings = { "FieldStateOption" => :field_state, "FieldType" => :field_type, "FieldNameAlt" => :label, "FieldName" => :name }
+      options = {}
+      mappings.map {|k,v| options[v]= pdf_field[k]}
+      pdf.pdf_fields.create!(options)
+    end
+    
+    pdf
+  end
+  
   # Takes form data, transforms to PDF fields, and then submits to PDF Filler to fill in.
   def fill_in(data)
     massaged_data = {}
     data.each do |key, value|
       form_field = self.form.form_fields.find_by_name(key)
-      if form_field and form_field.pdf_field
-        massaged_data[URI.encode(form_field.pdf_field.name, URI_REGEX)] = URI.encode(value, URI_REGEX) if form_field.pdf_field.is_fillable?
-        massaged_data["#{form_field.pdf_field.x},#{form_field.pdf_field.y},#{form_field.pdf_field.page_number}"] = URI.encode(value, URI_REGEX) if !form_field.pdf_field.is_fillable?
+      if form_field and form_field.pdf_fields.first
+        pdf_field = form_field.pdf_fields.first
+        massaged_data[URI.encode(pdf_field.name, URI_REGEX)] = URI.encode(value, URI_REGEX) if pdf_field.is_fillable?
+        massaged_data["#{pdf_field.x},#{pdf_field.y},#{pdf_field.page_number}"] = URI.encode(value, URI_REGEX) if !pdf_field.is_fillable?
       end
     end if data
     body = {:pdf => self.url}.merge(massaged_data)
