@@ -5,5 +5,5 @@ class PdfField < ActiveRecord::Base
 
   def is_fillable?
     self.name.present?
-  end  
+  end
 end

@@ -5,61 +5,53 @@
         "omb_control_number": "0960-0066",
         "omb_expiration_date": "2015-02-28",
         "title": "Application for Social Security Card",
+        "start_content":"Before you fill out the form, you will need these items...",
+        "agency_name": "Social Security Administration",
         "form_fields": [
             {
                 "description": "Your first name",
                 "field_type": "string",
-                "is_required": false,
                 "label": "Your first name",
-                "multiple": false,
-                "name": "first_name",
-                "position": null
+                "name": "first_name"
+            },
+            {
+                "description": "Your last name",
+                "field_type": "string",
+                "label": "Your last name",
+                "name": "last_name"
             },
             {
                 "description": "When were you born?",
                 "field_type": "date_select",
-                "is_required": false,
                 "label": "Date of birth",
-                "multiple": false,
-                "name": "date_of_birth",
-                "position": null
+                "name": "date_of_birth"
             },
             {
-                "description": null,
                 "field_type": "select",
-                "is_required": false,
                 "label": "Gender",
                 "multiple": false,
                 "name": "gender",
-                "options": "[[\"Male\", \"Male\"], [\"Female\", \"Female\"]]",
-                "position": null
+                "options": "[[\"Male\", \"Male\"], [\"Female\", \"Female\"]]"
             },
             {
                 "description": "First name to be shown on new card.",
                 "field_type": "string",
                 "is_required": true,
                 "label": "First name",
-                "multiple": false,
-                "name": "new_first_name",
-                "position": null
+                "name": "new_first_name"
             },
             {
                 "description": "Last name to be shown on new card.",
                 "field_type": "string",
                 "is_required": true,
                 "label": "Last name",
-                "multiple": false,
-                "name": "new_last_name",
-                "position": null
+                "name": "new_last_name"
             },
             {
                 "description": "Middle name to be shown on new card.",
                 "field_type": "string",
-                "is_required": false,
                 "label": "Middle name",
-                "multiple": false,
-                "name": "new_middle_name",
-                "position": null
+                "name": "new_middle_name"
             }
         ]
     }
