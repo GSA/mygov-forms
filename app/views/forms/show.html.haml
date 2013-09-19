@@ -5,8 +5,9 @@
   %h4
     = "Form #{@form.number}"
 
-  %p
-    Description goes here
+  - if @form.description
+    %p
+      = @form.description
 
   %p
     %strong Agency:
