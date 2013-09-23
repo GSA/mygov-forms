@@ -59,3 +59,16 @@ h1 { font-family: 'Goudy Bookletter 1911', serif; font-weight: normal;
   #log_in_link span:after { content: none;}
   #log_in_link strong:after { content: none;}
 }
+
+.col-lg-9 {
+  width: 50%;
+}
+
+.formtastic .input {
+  width: 90%;
+}
+
+.tooltip-inner {
+  max-width: 500px;
+  padding: 12px;
+}
