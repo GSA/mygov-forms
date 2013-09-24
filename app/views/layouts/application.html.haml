@@ -29,7 +29,7 @@
       %ul.nav.navbar-nav.navbar-right{role:'menubar'}
         - if user_signed_in?
           %li
-            = link_to 'Logout', signout_path, role: 'menuitem'
+            = link_to image_tag('shield.png') + raw('<span>Log Out</span><strong></strong>'), signout_path, id: 'log_out_link', :class => 'right', role: 'menuitem'
         - else
           %li
             = link_to image_tag('shield.png') + raw('<span>Log In</span><strong></strong>'), signin_path, id: 'log_in_link', :class => 'right'

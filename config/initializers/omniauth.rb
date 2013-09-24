@@ -7,8 +7,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
                 :verify => (ENV['RAILS_ENV'] == 'development') ? false : true
             }
         },
-      :scope => 'profile tasks notifications submit_forms'
+      :scope => 'profile tasks notifications'
 end
 
 OmniAuth.config.on_failure = SessionsController.action(:failure)
-

@@ -36,11 +36,11 @@ h1 { font-family: 'Goudy Bookletter 1911', serif; font-weight: normal;
   a { color:#122237; }
 }
 
-#log_in_link { background-color:#112136; border-right: 6px solid #1d6484; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
+#log_in_link, #log_out_link { background-color:#112136; border-right: 6px solid #1d6484; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
   img { height:52px; position:absolute; left:-19px; top:-6px; }
   span { font-weight: normal; }
 }
-#log_in_link:hover { background-color:#1d6484; border-right:6px solid #112136; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
+#log_in_link:hover, #log_out_link:hover { background-color:#1d6484; border-right:6px solid #112136; color:#fff; padding:15px 10px 14px 30px; position:relative; z-index: 10;
   img { height:52px; position:absolute; left:-19px; top:-6px; }
   span { font-weight: normal; }
 }
