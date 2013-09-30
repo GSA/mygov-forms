@@ -33,6 +33,7 @@ namespace :deploy do
   task :symlink_db, :roles => :app do
     run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{deploy_to}/shared/config/deploy.rb #{release_path}/config/deploy.rb"
+    run "ln -nfs #{deploy_to}/shared/config/local_env.yml.example #{release_path}/config/local_env.yml"
     run "ln -nfs #{deploy_to}/shared/config/initializers/01_mygov_forms.rb #{release_path}/config/initializers/01_mygov_forms.rb"
   end
 end
