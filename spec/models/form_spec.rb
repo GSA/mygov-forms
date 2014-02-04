@@ -42,9 +42,6 @@ describe Form do
     end
   end
 
-
-
-
   context "when the form has form fields, so with field orders, some without" do
     before do
       @form = Form.create!(@valid_attributes)
@@ -64,12 +61,48 @@ describe Form do
   end
 
   describe "#to_json" do
-    before do
-      @form = Form.create!(@valid_attributes)
-    end
+    before {@form = Form.create!(@valid_attributes)}
 
     it "outputs JSON with the number and title" do
       expect(JSON.parse(@form.to_json)).to eq({"icr_reference_number"=>nil, "number"=>"F-1", "omb_control_number"=>nil, "omb_expiration_date"=>nil, "title"=>"Form Title"})
+    end
+  end
+  
+  describe "::import_from_json" do
+    context 'form data with associated pdf data' do
+      before(:all) {@form = Form.import_from_json('spec/fixtures/forms/ss-5.json')}
+    
+      it "creates a valid form object" do
+        expect(@form.valid?).to be_true
+      end
+  
+      it "imports form fields" do
+        expect(@form.form_fields.count).to be > 0
+      end
+  
+      it "associates the pdf with the form and sets the required pdf attributes" do
+        expect(@form.pdf.valid?).to be_true
+      end
+    
+      it "imports pdf fields" do
+        expect(@form.pdf.pdf_fields.count).to be > 0
+      end
+    end
+    
+    context 'form data without associated pdf data' do
+      before(:all) {@form = Form.import_from_json('spec/fixtures/forms/sf-424.json')}
+      
+      it "creates a valid form object" do
+        expect(@form.valid?).to be_true
+      end
+  
+      it "imports form fields" do
+        expect(@form.form_fields.count).to be > 0
+      end
+  
+      it "associates the pdf with the form and sets the required pdf attributes" do
+        expect(@form.pdf).to be_nil
+      end    
     end
   end
 end

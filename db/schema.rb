@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130919164216) do
+ActiveRecord::Schema.define(:version => 20130926215502) do
 
   create_table "agencies", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130919164216) do
     t.boolean  "multiple",      :default => false
     t.integer  "position"
     t.text     "tool_tip_text"
+    t.string   "pdf_field"
   end
 
   add_index "form_fields", ["form_id", "position"], :name => "index_form_fields_on_form_id_and_position"
@@ -63,6 +64,9 @@ ActiveRecord::Schema.define(:version => 20130919164216) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "form_field_id"
+    t.string   "field_state"
+    t.string   "field_type"
+    t.string   "label"
   end
 
   add_index "pdf_fields", ["form_field_id"], :name => "index_pdf_fields_on_form_field_id"

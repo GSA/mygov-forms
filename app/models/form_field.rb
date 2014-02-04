@@ -1,7 +1,7 @@
 class FormField < ActiveRecord::Base
   belongs_to :form
-  has_one :pdf_field
-  attr_accessible :field_type, :name, :label, :description, :is_required, :options, :multiple, :position
+  has_many :pdf_fields
+  attr_accessible :field_type, :name, :label, :description, :is_required, :options, :multiple, :pdf_field, :position
   validates_presence_of :field_type, :name
   serialize :options
   

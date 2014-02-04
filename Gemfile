@@ -45,7 +45,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-nav'
 #  gem 'pry-rescue'
-#  gem 'pry-stack_explorer'
+  gem 'pry-stack_explorer'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem "zeus-parallel_tests"
